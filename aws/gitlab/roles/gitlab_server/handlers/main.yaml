@@ -1,0 +1,8 @@
+- name: Reconfigure GitLab
+  command: gitlab-ctl reconfigure
+#  when: gitlab_external_url is not none and gitlab_external_url != ''
+
+- name: Bootstrap Gitlab
+  command: gitlab-rake gitlab:setup
+  environment:
+    force: "yes"

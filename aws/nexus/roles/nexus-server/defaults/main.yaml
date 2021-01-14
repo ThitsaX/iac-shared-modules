@@ -1,0 +1,7 @@
+container_name: nexus
+container_image: sonatype/nexus3
+volume_name: nexus-data
+new_admin_pw: crazypassw0rd2
+proxy_repo_name: base-docker
+group_repo_name: docker-group
+docker_group_listening_port: 8083

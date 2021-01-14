@@ -1,0 +1,41 @@
+{
+    "name": "base-docker",
+    "online": true,
+    "storage": {
+      "blobStoreName": "default",
+      "strictContentTypeValidation": true
+    },
+    "cleanup": null,
+    "proxy": {
+      "remoteUrl": "https://registry-1.docker.io",
+      "contentMaxAge": -1,
+      "metadataMaxAge": -1
+    },
+    "negativeCache": {
+      "enabled": true,
+      "timeToLive": 1440
+    },
+    "httpClient": {
+      "blocked": false,
+      "autoBlock": true,
+      "connection": {
+          "retries": null,
+          "userAgentSuffix": null,
+          "timeout": null,
+          "enableCircularRedirects": false,
+          "enableCookies": false
+        },
+        "authentication": null
+    },
+    "routingRuleName": null,
+    "docker": {
+      "v1Enabled": false,
+      "forceBasicAuth": false,
+      "httpPort": null,
+      "httpsPort": null
+    },
+    "dockerProxy": {
+      "indexType": "HUB",
+      "indexUrl": null
+    }
+  }

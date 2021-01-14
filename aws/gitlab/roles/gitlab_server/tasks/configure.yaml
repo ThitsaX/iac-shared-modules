@@ -1,0 +1,57 @@
+- name: Create GitLab SSL configuration folder.
+  file:
+    path: /etc/gitlab/ssl
+    state: directory
+    owner: git
+    group: git
+    mode: 0755
+
+- name: Configure GitLab
+  template:
+    src: gitlab.rb.j2
+    dest: /etc/gitlab/gitlab.rb
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+    backup: yes
+  notify: Reconfigure GitLab
+
+
+# name: Generate API Token
+# command: 'gitlab-rails runner -e production "{{ generate_api_token_command }}"'
+#  vars:
+#    generate_api_token_command: "puts User.find(1).personal_access_tokens.create(name: 'register_runners', impersonation: false, scopes: [:api], expires_at: Time.now + 1.day).token"
+#  register: api_token
+#
+#- name: Save API Token
+#  copy: 
+#    content: "{{ api_token.stdout }}" 
+#    dest: /tmp/gitlab_token
+#  delegate_to: localhost
+#  set_fact:
+#    server_api_token: "{{ api_token.stdout }}"
+
+- name: Register Gitlab Runner Shared Token 
+  command: 'gitlab-rails runner -e production "puts Gitlab::CurrentSettings.current_application_settings.runners_registration_token"'
+  register: shared_runner_token
+
+- name: Save Gilab Shared Runner Token
+  set_fact:
+    gitlab_shared_runner_token: "{{ shared_runner_token.stdout }}"
+
+- name: Set root password
+  shell: "{{ lookup('template', 'setrootpassword.j2') }}"
+  register: resultado
+
+- name: "check result"
+  debug:
+    msg: "{{ resultado.stdout }} AND {{ resultado.stderr }}"
+
+- name: "Setup Backups"
+  template:
+    src: backups.j2
+    dest: /etc/cron.daily/backups
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+    backup: yes

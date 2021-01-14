@@ -2,7 +2,9 @@
  * # AMI ID Finder for Ubuntu Images
  *
  * Use this module to find the AMI ID for the version of Ubuntu for your Availability Zone.
+ *
  */
+
 data "aws_partition" "current" {}
 
 data "aws_ami" "ubuntu" {
@@ -15,9 +17,8 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "virtualization-type"
-    values = ["hvm"
+    values = ["hvm"]
   }
 
   owners = [data.aws_partition.current.partition == "aws-us-gov" ? "513442679011" : "099720109477"] # Canonical
 }
-

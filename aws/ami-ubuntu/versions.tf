@@ -4,4 +4,3 @@ terraform {
     aws = "~> 3.23"
   }
 }
-

@@ -1,0 +1,19 @@
+{
+  "name": "docker-group",
+  "online": true,
+  "storage": {
+    "blobStoreName": "default",
+    "strictContentTypeValidation": true
+  },
+  "group": {
+    "memberNames": [
+      "base-docker"
+    ]
+  },
+  "docker": {
+    "v1Enabled": false,
+    "forceBasicAuth": false,
+    "httpPort": {{ docker_group_listening_port }},
+    "httpsPort": null
+  }
+}

@@ -1,0 +1,3 @@
+version: v12.7.0
+docker_password: <changeme>
+docker_username: <changeme>

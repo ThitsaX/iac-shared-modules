@@ -1,0 +1,6 @@
+server_hostname: gitlab
+server_password: changeme
+external_url: <changeme>
+email_display_name: GitLab
+enable_pages: true
+pages_subdomain: pages

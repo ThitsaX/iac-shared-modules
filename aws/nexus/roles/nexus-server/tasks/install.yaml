@@ -1,0 +1,43 @@
+- name: Update apt cache
+  shell: apt update
+
+- name: Install docker
+  package:
+    name: docker.io
+
+- name: enable service docker and ensure it is started
+  service:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: Install pip
+  package:
+    name: python3-pip
+
+- name: Install pip docker
+  pip:
+    name: docker
+
+- name: Pull Docker image
+  community.general.docker_image:
+    name: "{{ container_image }}"
+    source: pull
+
+- name: Create a volume
+  community.general.docker_volume:
+    name: "{{ volume_name }}"
+    state: present
+
+- name: Create containers
+  community.general.docker_container:
+    name: "{{ container_name }}"
+    container_default_behavior: compatibility
+    image: "{{ container_image }}"
+    state: started
+    ports:
+      - "8081:8081"
+      - "{{ docker_group_listening_port }}:{{ docker_group_listening_port }}"
+    volumes:
+      - "{{ volume_name }}:/{{ volume_name }}"
+    restart_policy: always 

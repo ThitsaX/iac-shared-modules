@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  roles:
+    - common
+  environment:
+    GITLAB_ROOT_PASSWORD: changeme1234
+
+- hosts: gitlab_server
+  become: yes
+  roles:
+    - gitlab_server
+
+- hosts: gitlab_ci
+  become: yes
+  roles:
+    - gitlab_ci
