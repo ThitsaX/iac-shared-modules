@@ -1,7 +1,7 @@
 /**
  * # Automated ISKM to MCM integration
  *
- *Configuration management repo to configure WSO2 Identity Server (with Key Management) to support OAuth2 integration for MCM
+ * Configuration management repo to configure WSO2 Identity Server (with Key Management) to support OAuth2 integration for MCM
  *
  */
 
@@ -17,5 +17,4 @@ EOT
     when    = destroy
     command = "echo RESOURCE DESTRUCTION NOT IMPLEMENTED. SKIPPING"
   }
-
 }
