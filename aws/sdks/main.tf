@@ -10,8 +10,12 @@ provider "aws" {
 }
 
 resource "aws_key_pair" "tf_ssh_key" {
-  key_name   = "${var.client}-${var.environment}-sdk-vm-ssh-key"
+  key_name   = "${var.tenant}-${var.environment}-sdk-vm-ssh-key"
   public_key = tls_private_key.tf_ssh_key.public_key_openssh
+  tags = {
+    Tenant      = var.tenant
+    Environment = var.environment
+  }
 }
 
 resource "tls_private_key" "tf_ssh_key" {
@@ -54,6 +58,11 @@ module "clientnode" {
   template_filename   = "user_data.sh.tpl"
   instance_count      = var.client_node_count
   domain              = var.domain
+  tags = {
+    Tenant      = var.tenant
+    Environment = var.environment
+    Module      = "sdk"
+  }
 }
 
 module "k3snode" {
@@ -70,4 +79,9 @@ module "k3snode" {
   template_filename   = "k3s_user_data.sh.tpl"
   instance_count      = var.k3s_node_count
   domain              = var.domain
+  tags = {
+    Tenant      = var.tenant
+    Environment = var.environment
+    Module      = "sdk"
+  }
 }
