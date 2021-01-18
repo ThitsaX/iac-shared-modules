@@ -1,33 +1,39 @@
 resource "aws_vpc" "vpc" {
   cidr_block = var.vpc_cidr
+  tags       = var.tags
 }
 
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.subnet_cidrs.public
   map_public_ip_on_launch = true
+  tags                    = var.tags
 }
 
 resource "aws_route_table_association" "PublicAZA" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public.id
+  tags           = var.tags
 }
 
 resource "aws_subnet" "private" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.subnet_cidrs.private
   map_public_ip_on_launch = false
+  tags                    = var.tags
 }
 
 resource "aws_route_table_association" "PrivateAZA" {
   subnet_id      = aws_subnet.private.id
   route_table_id = aws_route_table.private.id
+  tags           = var.tags
 }
 
 resource "aws_security_group" "ssh" {
   name        = "SSH SG"
   description = "Allow SSH access"
   vpc_id      = aws_vpc.vpc.id
+  tags        = var.tags
 
   ingress {
     from_port   = 22
@@ -48,6 +54,7 @@ resource "aws_security_group" "cbsadapter" {
   name        = "cbsadapter"
   description = "cbsadapter"
   vpc_id      = aws_vpc.vpc.id
+  tags        = var.tags
 
   ingress {
     from_port   = 3000
@@ -68,6 +75,7 @@ resource "aws_security_group" "sdk" {
   name        = "sdk"
   description = "sdk"
   vpc_id      = aws_vpc.vpc.id
+  tags        = var.tags
 
   ingress {
     from_port   = 4000
@@ -88,6 +96,7 @@ resource "aws_security_group" "kubeapi" {
   name        = "kube api"
   description = "kube api"
   vpc_id      = aws_vpc.vpc.id
+  tags        = var.tags
 
   ingress {
     from_port   = 6443
@@ -109,13 +118,12 @@ data "aws_availability_zones" "available" {}
 
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.vpc.id
-  tags = {
-    Name = "internet gw terraform generated"
-  }
+  tags   = merge(var.tags, { Name = "internet gw terraform generated" })
 }
 
 resource "aws_network_acl" "all" {
   vpc_id = aws_vpc.vpc.id
+
   egress {
     protocol   = "-1"
     rule_no    = 2
@@ -132,16 +140,13 @@ resource "aws_network_acl" "all" {
     from_port  = 0
     to_port    = 0
   }
-  tags = {
-    Name = "open acl"
-  }
+  tags = merge(var.tags, { Name = "open acl" })
 }
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.vpc.id
-  tags = {
-    Name = "Public"
-  }
+  tags   = merge(var.tags, { Name = "Public" })
+
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.gw.id
@@ -150,9 +155,8 @@ resource "aws_route_table" "public" {
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.vpc.id
-  tags = {
-    Name = "Private"
-  }
+  tags   = merge(var.tags, { Name = "Private" })
+
   route {
     cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.PublicAZA.id
@@ -160,11 +164,13 @@ resource "aws_route_table" "private" {
 }
 
 resource "aws_eip" "forNat" {
-  vpc = true
+  vpc  = true
+  tags = var.tags
 }
 
 resource "aws_nat_gateway" "PublicAZA" {
   allocation_id = aws_eip.forNat.id
   subnet_id     = aws_subnet.public.id
   depends_on    = [aws_internet_gateway.gw]
+  tags          = var.tags
 }

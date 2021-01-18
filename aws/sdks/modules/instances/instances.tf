@@ -1,4 +1,3 @@
-
 resource "aws_instance" "app_server" {
   count                  = var.instance_count
   ami                    = var.ami
@@ -8,9 +7,7 @@ resource "aws_instance" "app_server" {
   user_data              = data.template_file.user_data.rendered
   key_name               = var.key_pair_name
 
-  tags = {
-    Name = "${var.name}-${count.index}"
-  }
+  tags = merge(var.tags, { Name = "${var.name}-${count.index}" })
 }
 
 data "template_file" "user_data" {

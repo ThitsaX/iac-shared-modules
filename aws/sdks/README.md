@@ -23,7 +23,6 @@ No requirements.
 | allow\_sdk\_access | List of CIDR blocks that can access sdk ports | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | allow\_ssh\_access | CIDR block that can access instances via SSH | `list` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | ami | AWS Instance type | `string` | `"ami-06fd8a495a537da8b"` | no |
-| client | Name of client | `string` | n/a | yes |
 | client\_node\_count | Number of client nodes to create with docker-compose | `number` | `1` | no |
 | domain | Domain name to create DNS entries | `string` | n/a | yes |
 | environment | Name of environment this SDK belongs to | `string` | `"dev"` | no |
@@ -34,7 +33,7 @@ No requirements.
 | region | AWS region. Changing it will lead to loss of complete stack. | `string` | n/a | yes |
 | sdks | A list of maps Mock FSP data. | `list(map(string))` | n/a | yes |
 | subnet\_cidrs | CIDR blocks for public and private subnets | `map(string)` | <pre>{<br>  "private": "10.0.2.0/24",<br>  "public": "10.0.1.0/24"<br>}</pre> | no |
-| tags | Map of tags to apply to resources created | `map(string)` | `{}` | no |
+| tenant | Name of the tenant | `string` | n/a | yes |
 | vpc\_cidr | CIDR block to allocate the SDK VPC | `string` | `"10.0.0.0/16"` | no |
 
 ## Outputs

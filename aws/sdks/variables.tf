@@ -3,8 +3,8 @@ variable "region" {
   type        = string
 }
 
-variable "client" {
-  description = "Name of client"
+variable "tenant" {
+  description = "Name of the tenant"
   type        = string
 }
 
@@ -108,10 +108,4 @@ variable "extra_packages" {
   default = {
     sdk = "wget bind-utils docker nc git"
   }
-}
-
-variable "tags" {
-  description = "Map of tags to apply to resources created"
-  type        = map(string)
-  default     = {}
 }

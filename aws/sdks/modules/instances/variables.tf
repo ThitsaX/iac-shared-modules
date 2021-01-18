@@ -66,3 +66,9 @@ variable "domain" {
   description = "Domain name to create DNS entries"
   type        = string
 }
+
+variable "tags" {
+  description = "Map of tags to apply to resources"
+  type        = map(string)
+  default     = {}
+}
