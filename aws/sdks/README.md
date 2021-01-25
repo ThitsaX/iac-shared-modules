@@ -33,7 +33,7 @@ No requirements.
 | region | AWS region. Changing it will lead to loss of complete stack. | `string` | n/a | yes |
 | sdks | A list of maps Mock FSP data. | `list(map(string))` | n/a | yes |
 | subnet\_cidrs | CIDR blocks for public and private subnets | `map(string)` | <pre>{<br>  "private": "10.0.2.0/24",<br>  "public": "10.0.1.0/24"<br>}</pre> | no |
-| tenant | Name of the tenant | `string` | n/a | yes |
+| tenant | Tenant name | `string` | n/a | yes |
 | vpc\_cidr | CIDR block to allocate the SDK VPC | `string` | `"10.0.0.0/16"` | no |
 
 ## Outputs

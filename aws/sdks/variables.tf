@@ -4,7 +4,7 @@ variable "region" {
 }
 
 variable "tenant" {
-  description = "Name of the tenant"
+  description = "Tenant name"
   type        = string
 }
 
