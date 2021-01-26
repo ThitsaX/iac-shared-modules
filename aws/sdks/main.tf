@@ -42,6 +42,11 @@ module "network" {
   allow_cbs_access = var.allow_cbs_access
   allow_sdk_access = var.allow_sdk_access
   allow_k3s_access = var.allow_k3s_access
+  tags = {
+    Tenant      = var.tenant
+    Environment = var.environment
+    Module      = "sdk"
+  }
 }
 
 module "clientnode" {
