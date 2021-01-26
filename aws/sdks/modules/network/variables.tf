@@ -32,3 +32,8 @@ variable "subnet_cidrs" {
   type        = map(string)
   default     = {}
 }
+
+variable "tags" {
+  description = "Map of tags to apply to resources"
+  type        = map(string)
+}
