@@ -13,7 +13,6 @@ resource "aws_subnet" "public" {
 resource "aws_route_table_association" "PublicAZA" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public.id
-  tags           = var.tags
 }
 
 resource "aws_subnet" "private" {
@@ -26,7 +25,6 @@ resource "aws_subnet" "private" {
 resource "aws_route_table_association" "PrivateAZA" {
   subnet_id      = aws_subnet.private.id
   route_table_id = aws_route_table.private.id
-  tags           = var.tags
 }
 
 resource "aws_security_group" "ssh" {
