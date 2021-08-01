@@ -1,0 +1,33 @@
+domain            = "hipipo.mojaloop-hackathon.io"
+client_node_count = 3
+k3s_node_count    = 0
+allow_cbs_access = [
+  "3.249.166.125/32", # wireguard public ip
+  "52.18.76.94/32",   # callback/nat gateway
+  "105.21.64.0/19",    # hotel isp range
+  "52.31.52.148/32"   # Gitlab runner
+]
+allow_sdk_access = [
+  "3.249.166.125/32", # wireguard public ip
+  "52.18.76.94/32",   # callback/nat gateway
+  "105.21.64.0/19",    # hotel isp range
+  "52.31.52.148/32"   # Gitlab runner
+]
+allow_ssh_access = ["3.249.166.125/32"]
+sdks = [
+  { "name" : "emoments", "port" : "4000", "sim_port" : "3003", "account_id" : "ACC011111", "instance" : "0", "currency" : "UGX", "msisdn" : "256111111111", "business_id" : "emomentsMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "yougandaltd", "port" : "4100", "sim_port" : "3103", "account_id" : "ACC012222", "instance" : "0", "currency" : "UGX", "msisdn" : "256222222222", "business_id" : "yougantaltdMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "teamspec", "port" : "4200",  "sim_port" : "3203", "account_id" : "ACC013333", "instance" : "0", "currency" : "UGX", "msisdn" : "256333333333", "business_id" : "teamspecMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "wsacco", "port" : "4300",  "sim_port" : "3303", "account_id" : "ACC014444", "instance" : "0", "currency" : "UGX", "msisdn" : "256444444444", "business_id" : "wsaccoMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "kanzucodeladies", "port" : "4400", "sim_port" : "3403", "account_id" : "ACC015555", "instance" : "0", "currency" : "UGX", "msisdn" : "256555555555", "business_id" : "kanzucodeladiesMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "greengrab", "port" : "4000", "sim_port" : "3003", "account_id" : "ACC021111", "instance" : "1", "currency" : "ZMW", "msisdn" : "260111111111", "business_id" : "greengrabMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "achors", "port" : "4100", "sim_port" : "3103", "account_id" : "ACC022222", "instance" : "1", "currency" : "ZMW", "msisdn" : "260222222222", "business_id" : "achorsMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "ugmart", "port" : "4200", "sim_port" : "3203", "account_id" : "ACC023333", "instance" : "1", "currency" : "ZMW", "msisdn" : "260333333333", "business_id" : "ugmartMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "hackgirls", "port" : "4300", "sim_port" : "3303", "account_id" : "ACC024444", "instance" : "1", "currency" : "ZMW", "msisdn" : "260444444444", "business_id" : "hackgirlsMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "kameeza", "port" : "4400", "sim_port" : "3403", "account_id" : "ACC025555", "instance" : "1", "currency" : "UGX", "msisdn" : "260555555555", "business_id" : "kameezaMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "alpteqictsols", "port" : "4000", "sim_port" : "3003", "account_id" : "ACC031111", "instance" : "2", "currency" : "EUR", "msisdn" : "978111111111", "business_id" : "alpteqictsolsMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "affinity", "port" : "4100", "sim_port" : "3103", "account_id" : "ACC032222", "instance" : "2", "currency" : "EUR", "msisdn" : "978222222222", "business_id" : "affinityMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "skycode", "port" : "4200", "sim_port" : "3203", "account_id" : "ACC033333", "instance" : "2", "currency" : "EUR", "msisdn" : "978333333333", "business_id" : "skycodeMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "teamtime", "port" : "4300", "sim_port" : "3303", "account_id" : "ACC034444", "instance" : "2", "currency" : "EUR", "msisdn" : "978444444444", "business_id" : "teamtimeMerchant", "notification_email" : "test@modusbox.com" },
+  { "name" : "kuzimba", "port" : "4400", "sim_port" : "3403", "account_id" : "ACC035555", "instance" : "2", "currency" : "EUR", "msisdn" : "978555555555", "business_id" : "kuzimbaMerchant", "notification_email" : "test@modusbox.com" },
+]

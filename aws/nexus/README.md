@@ -1,10 +1,10 @@
-# GitLab and GitLab CI Module
+# Nexus Module
 
-Create GitLab server and CI runner using EC2 instances.
+Create Nexus server using EC2 instance.
 
-The module creates 2 EC2 instances, one for GitLab server. The other for the GitLab CI runner. It configures the CI runner with the GitLab server so that CICD job can immediately be run.
+The module creates an EC2 instance. It configures Nexus using a docker instance.
 
-Configuration of GitLab and GitLab CI runner is done by Ansible using the roles included in this module.
+Configuration is done by Ansible using the roles included in this module.
 
 ## Requirements
 
@@ -19,28 +19,28 @@ Configuration of GitLab and GitLab CI runner is done by Ansible using the roles 
 | aws | n/a |
 | local | n/a |
 | null | n/a |
+| random | n/a |
+| tls | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| allowed\_cidr\_blocks | A list of CIDR blocks allowed to connect | `list(string)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
 | ami | AMI to use | `string` | `"ami-0e219142c0bee4a6e"` | no |
 | attributes | Additional attributes (e.g. `1`) | `list(string)` | `[]` | no |
 | delimiter | Delimiter to be used between `namespace`, `stage`, `name` and `attributes` | `string` | `"-"` | no |
+| docker\_repo\_allowed\_cidr\_blocks | A list of CIDR blocks allowed to connect | `list(string)` | <pre>[<br>  "10.25.0.0/16"<br>]</pre> | no |
+| docker\_repo\_listening\_port | n/a | `number` | `8082` | no |
 | domain | Base domain | `string` | n/a | yes |
-| fqdn | n/a | `any` | n/a | yes |
-| gitlab\_runner\_size | Gitlab runner VM size | `string` | n/a | yes |
-| instance\_type | Elastic cache instance type | `string` | `"t2.large"` | no |
+| instance\_type | Elastic cache instance type | `string` | `"t3.medium"` | no |
 | key\_name | Key name | `string` | `""` | no |
-| name | Name  (e.g. `gitlab`) | `string` | `"gitlab"` | no |
+| name | Name  (e.g. `app` or `bastion`) | `string` | `"nexus"` | no |
 | namespace | Namespace. Used to help uniquely name resources | `string` | n/a | yes |
+| nexus\_admin\_password | nexus admin password, if blank, random pw will be generated | `string` | `""` | no |
 | security\_groups | AWS security group IDs | `list(string)` | n/a | yes |
 | ssh\_user | Default SSH user for this AMI. e.g. `ec2user` for Amazon Linux and `ubuntu` for Ubuntu systems | `string` | `"ubuntu"` | no |
 | subnets | AWS subnet IDs | `list(string)` | n/a | yes |
 | tags | Additional tags (e.g. map('BusinessUnit`,`XYZ`)` | `map(string)` | `{}` | no |
-| user\_data | User data content | `string` | `""` | no |
-| user\_data\_file | User data file | `string` | `"user_data.sh"` | no |
 | vpc\_id | VPC ID | `string` | n/a | yes |
 | zone\_id | Route53 DNS Zone ID | `string` | `""` | no |
 
@@ -48,15 +48,14 @@ Configuration of GitLab and GitLab CI runner is done by Ansible using the roles 
 
 | Name | Description |
 |------|-------------|
-| ci\_private\_ip | Private IP of GitLab CI server |
-| ci\_public\_ip | Public IP of GitLab CI server |
-| gitlab\_ssh\_private\_key | Private SSH key for GitLab Server and CI runner |
-| gitlab\_ssh\_public\_key | Public SSH key for GitLab Server and CI runner |
 | instance\_id | Instance ID |
+| nexus\_admin\_pw | nexus admin pw |
+| nexus\_docker\_repo\_port | nexus docker repo port |
+| nexus\_ssh\_private\_key | Private SSH key for Nexus Server |
+| nexus\_ssh\_public\_key | Public SSH key for Nexus Server |
 | role | Name of AWS IAM Role associated with the instance |
 | security\_group\_id | Security group ID |
 | server\_hostname | n/a |
-| server\_private\_ip | Private IP of GitLab server |
-| server\_public\_ip | Public IP of GitLab server |
+| server\_private\_ip | Private IP of nexus server |
 | ssh\_user | SSH user |
 

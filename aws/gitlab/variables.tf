@@ -1,5 +1,5 @@
 variable "name" {
-  description = "Name  (e.g. `app` or `bastion`)"
+  description = "Name  (e.g. `gitlab`)"
   type        = string
   default     = "gitlab"
 }

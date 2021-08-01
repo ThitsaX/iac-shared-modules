@@ -44,11 +44,10 @@ output "ci_private_ip" {
 
 output "gitlab_ssh_private_key" {
   description = "Private SSH key for GitLab Server and CI runner"
-  value       = tls_private_key.gitlab_provisioner_key.private_key_pem
-  sensitive   = true
+  value       = module.ssh_key_pair.private_key_filename
 }
 
 output "gitlab_ssh_public_key" {
   description = "Public SSH key for GitLab Server and CI runner"
-  value       = tls_private_key.gitlab_provisioner_key.public_key_openssh
+  value       = module.ssh_key_pair.public_key_filename
 }

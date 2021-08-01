@@ -1,3 +1,0 @@
-*.tfstate
-.terraform
-ssh_keys

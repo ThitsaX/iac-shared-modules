@@ -1,29 +1,9 @@
-variable "most_recent" {
-  description = "boolean, maps to `most_recent` parameter for `aws_ami` data source"
-  type        = bool
-  default     = true
-}
-
-variable "name_map" {
-  description = "map of release numbers to names, including trusty, xenial, zesty, and artful"
-  type        = map(string)
-  default = {
-    "20.04" = "focal"
-    "19.10" = "eoan"
-    "19.04" = "disco"
-    "18.04" = "bionic"
-    "17.10" = "artful"
-    "17.04" = "zesty"
-    "16.04" = "xenial"
-    "14.04" = "trusty"
-  }
-}
-
-variable "release" {
-  description = "default ubuntu release to target"
-  type        = string
-  default     = "20.04"
-}
+/**
+ * # AMI ID Finder for Ubuntu Images
+ *
+ * Use this module to find the AMI ID for the version of Ubuntu for your Availability Zone.
+ *
+ */
 
 data "aws_partition" "current" {}
 
@@ -41,9 +21,4 @@ data "aws_ami" "ubuntu" {
   }
 
   owners = [data.aws_partition.current.partition == "aws-us-gov" ? "513442679011" : "099720109477"] # Canonical
-}
-
-output "id" {
-  description = "ID of the AMI"
-  value       = data.aws_ami.ubuntu.id
 }
