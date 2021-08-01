@@ -34,6 +34,7 @@ resource "aws_instance" "wireguard" {
   }
   provisioner "remote-exec" {
     inline = [
+      "sleep 120",
       "sudo DEBIAN_FRONTEND=noninteractive apt update",
       "sudo DEBIAN_FRONTEND=noninteractive apt install -q -y wireguard || exit 1",
       "umask 077; sudo wg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey  | sudo tee /etc/wireguard/publickey",
@@ -44,6 +45,7 @@ resource "aws_instance" "wireguard" {
       "sudo chown root:root /etc/wireguard/wg0.conf",
       "sudo sed -e \"s@##MYKEY##@$(sudo cat /etc/wireguard/privatekey)@\" -i /etc/wireguard/wg0.conf",
       "sudo systemctl enable wg-quick@wg0",
+      "sudo systemctl restart wg-quick@wg0",
       "sudo echo DONE. PLEASE REBOOT"
     ]
   }
