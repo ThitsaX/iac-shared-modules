@@ -47,4 +47,9 @@ resource "aws_instance" "wireguard" {
       "sudo echo DONE. PLEASE REBOOT"
     ]
   }
+  lifecycle {
+    ignore_changes = [
+      ami
+    ]
+  }
 }
