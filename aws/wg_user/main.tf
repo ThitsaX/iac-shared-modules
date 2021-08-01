@@ -1,14 +1,3 @@
-/**
- * # VPN User account Creation
- *
- * > NOTE: this is experimental and is currently not used
- *
- * Create Wireguard profiles for each user that requires VPN access
- *
- * Uses an inline provider to create the profiles
- *
- */
-
 resource null_resource "setup-users" {
  connection {
     type = "ssh"
