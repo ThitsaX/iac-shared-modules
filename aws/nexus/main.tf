@@ -139,6 +139,11 @@ resource "aws_instance" "nexus" {
     volume_type           = "gp2"
     volume_size           = 100
   }
+  lifecycle {
+    ignore_changes = [
+      ami
+    ]
+  }
 }
 
 resource "aws_route53_record" "nexus-private" {

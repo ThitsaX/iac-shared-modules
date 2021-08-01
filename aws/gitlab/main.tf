@@ -142,6 +142,11 @@ resource "aws_instance" "gitlab-server" {
       private_key = file(module.ssh_key_pair.private_key_filename)
     }
   }
+  lifecycle {
+    ignore_changes = [
+      ami
+    ]
+  }
 }
 
 resource "aws_instance" "gitlab-ci" {
@@ -169,6 +174,11 @@ resource "aws_instance" "gitlab-ci" {
       user        = "ubuntu"
       private_key = file(module.ssh_key_pair.private_key_filename)
     }
+  }
+  lifecycle {
+    ignore_changes = [
+      ami
+    ]
   }
 }
 
