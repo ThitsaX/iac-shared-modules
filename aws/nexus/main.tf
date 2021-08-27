@@ -168,7 +168,7 @@ resource "local_file" "ansible-inventory" {
 
 resource "null_resource" "configure-nexus" {
   provisioner "local-exec" {
-    command     = "ansible-galaxy collection install community.general && ansible-playbook -i inventory nexus.yaml --extra-vars 'new_admin_pw=${local.nexus_admin_password} docker_group_listening_port=${var.docker_repo_listening_port}'"
+    command     = "ansible-galaxy collection install community.docker && ansible-playbook -i inventory nexus.yaml --extra-vars 'new_admin_pw=${local.nexus_admin_password} docker_group_listening_port=${var.docker_repo_listening_port}'"
     working_dir = path.module
   }
   depends_on = [aws_instance.nexus, local_file.ansible-inventory]

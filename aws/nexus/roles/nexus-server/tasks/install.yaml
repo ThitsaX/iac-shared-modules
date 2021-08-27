@@ -20,17 +20,17 @@
     name: docker
 
 - name: Pull Docker image
-  community.general.docker_image:
+  community.docker.docker_image:
     name: "{{ container_image }}"
     source: pull
 
 - name: Create a volume
-  community.general.docker_volume:
+  community.docker.docker_volume:
     name: "{{ volume_name }}"
     state: present
 
 - name: Create containers
-  community.general.docker_container:
+  community.docker.docker_container:
     name: "{{ container_name }}"
     container_default_behavior: compatibility
     image: "{{ container_image }}"

@@ -1,6 +1,6 @@
 - hosts: nexus
   become: yes
   collections:
-    - community.general
+    - community.docker
   roles:
     - nexus-server
