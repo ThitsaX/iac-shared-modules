@@ -10,7 +10,7 @@ variable "instance_type" {
 
 variable "ssh_key_name" {
   description = "SSH key name used to provision this server"
-  type = "string"
+  type = string
 }
 
 variable "security_groups" {
