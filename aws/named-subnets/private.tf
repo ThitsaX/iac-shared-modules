@@ -41,7 +41,7 @@ resource "aws_route_table" "private" {
 resource "aws_route" "private" {
   for_each               = toset(local.private_subnets)
   route_table_id         = aws_route_table.private[each.value].id
-  network_interface_id   = var.eni_id
+  #network_interface_id   = var.eni_id
   nat_gateway_id         = var.ngw_id
   destination_cidr_block = "0.0.0.0/0"
 }
