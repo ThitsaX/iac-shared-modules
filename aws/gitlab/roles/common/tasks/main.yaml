@@ -1,6 +1,7 @@
 - name: Set Server hostname
   hostname:
-    name: "{{ inventory_hostname }}"
+    name: "{{ ansible_hostname }}"
+    use: systemd
 
 - name: Install Pip3
   apt:
