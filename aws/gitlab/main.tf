@@ -202,9 +202,14 @@ resource "local_file" "ansible-inventory" {
   file_permission = "0644"
 }
 
+resource "random_password" "gitlab_root_password" {
+  length = 16
+  special = true
+}
+
 resource "null_resource" "configure-gitlab" {
   provisioner "local-exec" {
-    command     = "ansible-playbook -i inventory gitlab.yaml --extra-vars 'external_url=https://${module.dns.hostname}/ enable_pages=false server_hostname=${module.dns.hostname}'"
+    command     = "ansible-playbook -i inventory gitlab.yaml --extra-vars 'server_password=${random_password.gitlab_root_password.result} external_url=https://${module.dns.hostname}/ enable_pages=false server_hostname=${module.dns.hostname}'"
     working_dir = path.module
   }
   depends_on = [aws_instance.gitlab-server, aws_instance.gitlab-ci]

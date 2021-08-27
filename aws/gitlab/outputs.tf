@@ -51,3 +51,9 @@ output "gitlab_ssh_public_key" {
   description = "Public SSH key for GitLab Server and CI runner"
   value       = module.ssh_key_pair.public_key_filename
 }
+
+output "gitlab_root_pw" {
+  description = "root pw for gitlab"
+  value       = random_password.gitlab_root_password.result
+  sensitive   = true
+}
