@@ -10,7 +10,7 @@
 data "template_file" "wgui_service" {
   template = file("${path.module}/assets/wgui.service.tpl")
 
-  vars {
+  vars = {
     wgui_password = var.ui_admin_pw
   }
 }
