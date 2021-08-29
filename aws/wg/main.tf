@@ -41,6 +41,14 @@ resource "aws_instance" "wireguard" {
     destination = "/tmp/wg0.conf"
   }
   provisioner "file" {
+    source      = "${path.module}/assets/wg-autoreload.path"
+    destination = "/tmp/wg-autoreload.path"
+  }
+  provisioner "file" {
+    source      = "${path.module}/assets/wg-autoreload.service"
+    destination = "/tmp/wg-autoreload.service"
+  }
+  provisioner "file" {
     content      = data.template_file.wgui_service.rendered
     destination = "/tmp/wgui.service"
   }
@@ -62,10 +70,10 @@ resource "aws_instance" "wireguard" {
       "wget https://github.com/ngoduykhanh/wireguard-ui/releases/download/v0.3.2/wireguard-ui-v0.3.2-linux-amd64.tar.gz",
       "tar -xzvf wireguard-ui-v0.3.2-linux-amd64.tar.gz",
       "sudo mv wireguard-ui /usr/local/bin",
-      "sudo cp /tmp/wgui.service /etc/systemd/system/",
-      "sudo systemctl enable wgui",
-      "sudo systemctl restart wgui",
-      "sudo echo DONE. PLEASE REBOOT"
+      "sudo cp /tmp/wgui.service /tmp/wg-autoreload.service /tmp/wg-autoreload.path /etc/systemd/system/",
+      "sudo systemctl enable wgui.service wg-autoreload.service wg-autoreload.path",
+      "sudo systemctl restart wgui.service wg-autoreload.service wg-autoreload.path",
+      "sudo echo DONE"
     ]
   }
   lifecycle {
