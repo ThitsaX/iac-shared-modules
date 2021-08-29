@@ -29,3 +29,7 @@ variable "tags" {
 variable "ssh_key" {
   description = "private key used to access this server"
 }
+
+variable "ui_admin_pw" {
+  description = "admin pw for ui
+}

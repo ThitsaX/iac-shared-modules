@@ -7,6 +7,14 @@
  *
  */
 
+data "template_file" "wgui_service" {
+  template = file("${path.module}/assets/wgui.service.tpl")
+
+  vars {
+    wgui_password = var.ui_admin_pw
+  }
+}
+
 resource "aws_instance" "wireguard" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
@@ -27,10 +35,14 @@ resource "aws_instance" "wireguard" {
     agent       = false
     private_key = var.ssh_key
   }
-
+  
   provisioner "file" {
     source      = "${path.module}/assets/wg0.conf"
     destination = "/tmp/wg0.conf"
+  }
+  provisioner "file" {
+    content      = data.template_file.wgui_service.rendered
+    destination = "/tmp/wgui.service"
   }
   provisioner "remote-exec" {
     inline = [
@@ -46,6 +58,13 @@ resource "aws_instance" "wireguard" {
       "sudo sed -e \"s@##MYKEY##@$(sudo cat /etc/wireguard/privatekey)@\" -i /etc/wireguard/wg0.conf",
       "sudo systemctl enable wg-quick@wg0",
       "sudo systemctl restart wg-quick@wg0",
+      "cd /tmp",
+      "wget https://github.com/ngoduykhanh/wireguard-ui/releases/download/v0.3.2/wireguard-ui-v0.3.2-linux-amd64.tar.gz",
+      "tar -xzvf wireguard-ui-v0.3.2-linux-amd64.tar.gz",
+      "sudo mv wireguard-ui /usr/local/bin",
+      "sudo cp /tmp/wgui.service /etc/systemd/system/",
+      "sudo systemctl enable wgui",
+      "sudo systemctl restart wgui",
       "sudo echo DONE. PLEASE REBOOT"
     ]
   }
