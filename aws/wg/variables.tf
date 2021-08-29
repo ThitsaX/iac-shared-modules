@@ -31,5 +31,5 @@ variable "ssh_key" {
 }
 
 variable "ui_admin_pw" {
-  description = "admin pw for ui
+  description = "admin pw for ui"
 }
