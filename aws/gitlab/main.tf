@@ -217,5 +217,5 @@ resource "null_resource" "configure-gitlab" {
 
 
 locals {
-  letsencrypt_endpoint = use_letsencrypt_staging ? "https://acme-staging-v02.api.letsencrypt.org/directory" : "https://acme-v02.api.letsencrypt.org/directory"
+  letsencrypt_endpoint = var.use_letsencrypt_staging ? "https://acme-staging-v02.api.letsencrypt.org/directory" : "https://acme-v02.api.letsencrypt.org/directory"
 }
