@@ -106,7 +106,7 @@ variable "user_data_file" {
 }
 
 variable "use_letsencrypt_staging" {
-  type        = boolean
-  detault     = false
+  type        = bool
+  default     = false
   description = "use staging instead of prod letsencrypt endpoint"
 }
