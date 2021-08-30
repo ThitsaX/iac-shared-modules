@@ -49,11 +49,15 @@
   command: "gitlab-runner install --user gitlab-runner"
   ignore_errors: true
 
+- name: Download ca from gitlab
+  command: "openssl s_client -showcerts {{ external_url }}:443 2>/dev/null  < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/{{ external_url }}.crt"
+
 - name: Start Gitlab Runner
   command: "gitlab-runner start"
 
 - name: Register runners
   command: "gitlab-runner register \
+    --tls-ca-file=/tmp/{{ external_url }}.crt
     --non-interactive \
     --url {{ external_url }} \
     --registration-token {{ hostvars['gitlab_server']['gitlab_shared_runner_token'] }} \
