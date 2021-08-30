@@ -50,7 +50,8 @@
   ignore_errors: true
 
 - name: Download ca from gitlab
-  command: "openssl s_client -showcerts {{ server_hostname }}:443 2>/dev/null  < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/{{ server_hostname }}.crt"
+  shell: |
+    openssl s_client -showcerts {{ server_hostname }}:443 2>/dev/null < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/{{ server_hostname }}.crt
 
 - name: Start Gitlab Runner
   command: "gitlab-runner start"
