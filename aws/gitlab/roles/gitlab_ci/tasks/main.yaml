@@ -50,14 +50,14 @@
   ignore_errors: true
 
 - name: Download ca from gitlab
-  command: "openssl s_client -showcerts {{ external_url }}:443 2>/dev/null  < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/{{ external_url }}.crt"
+  command: "openssl s_client -showcerts {{ server_hostname }}:443 2>/dev/null  < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/{{ server_hostname }}.crt"
 
 - name: Start Gitlab Runner
   command: "gitlab-runner start"
 
 - name: Register runners
   command: "gitlab-runner register \
-    --tls-ca-file=/tmp/{{ external_url }}.crt
+    --tls-ca-file=/tmp/{{ server_hostname }}.crt
     --non-interactive \
     --url {{ external_url }} \
     --registration-token {{ hostvars['gitlab_server']['gitlab_shared_runner_token'] }} \
