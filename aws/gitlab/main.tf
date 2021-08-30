@@ -209,8 +209,13 @@ resource "random_password" "gitlab_root_password" {
 
 resource "null_resource" "configure-gitlab" {
   provisioner "local-exec" {
-    command     = "ansible-playbook -i inventory gitlab.yaml --extra-vars 'server_password=${random_password.gitlab_root_password.result} external_url=https://${module.dns.hostname}/ enable_pages=false server_hostname=${module.dns.hostname}'"
+    command     = "ansible-playbook -i inventory gitlab.yaml --extra-vars 'letsencrypt_endpoint=${local.letsencrypt_endpoint} server_password=${random_password.gitlab_root_password.result} external_url=https://${module.dns.hostname}/ enable_pages=false server_hostname=${module.dns.hostname}'"
     working_dir = path.module
   }
   depends_on = [aws_instance.gitlab-server, aws_instance.gitlab-ci]
+}
+
+
+locals {
+  letsencrypt_endpoint = use_letsencrypt_staging ? "https://acme-staging-v02.api.letsencrypt.org/directory" : "https://acme-v02.api.letsencrypt.org/directory"
 }

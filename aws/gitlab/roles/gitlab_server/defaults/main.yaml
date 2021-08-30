@@ -4,3 +4,4 @@ external_url: <changeme>
 email_display_name: GitLab
 enable_pages: true
 pages_subdomain: pages
+letsencrypt_endpoint: https://acme-v02.api.letsencrypt.org/directory

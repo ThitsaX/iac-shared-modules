@@ -1758,8 +1758,9 @@ pages_external_url "http://pages.example.com/"
 # Let's Encrypt integration
 ################################################################################
 letsencrypt['enable'] = true
- letsencrypt['contact_emails'] = ["david.gouveia@modusbox.com"] # This should be an array of email addresses to add as contacts
+ letsencrypt['contact_emails'] = ["cicd.automation@modusbox.com "] # This should be an array of email addresses to add as contacts
  letsencrypt['group'] = 'root'
+ letsencrypt['acme_production_endpoint'] = '{{ letsencrypt_endpoint }}'
  letsencrypt['key_size'] = 2048
  letsencrypt['owner'] = 'root'
 # letsencrypt['wwwroot'] = '/var/opt/gitlab/nginx/www'

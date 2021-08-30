@@ -104,3 +104,9 @@ variable "user_data_file" {
   default     = "user_data.sh"
   description = "User data file"
 }
+
+variable "use_letsencrypt_staging" {
+  type        = boolean
+  detault     = false
+  description = "use staging instead of prod letsencrypt endpoint"
+}
