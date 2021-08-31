@@ -1,3 +1,6 @@
-provider "external" {
-  version = "~> 1.2.0"
+terraform {
+  required_providers {
+    external = "~> 1.2.0"
+  }
 }
+

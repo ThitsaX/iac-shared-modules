@@ -9,6 +9,7 @@ variable "iskm_fqdn" {
   type        = string
 }
 
+
 variable "create_service_provider" {
   description = "Whether or not to create service provider `y`"
   type        = string
@@ -33,3 +34,4 @@ variable "iskm_status" {
   default     = "notused"
 
 }
+
