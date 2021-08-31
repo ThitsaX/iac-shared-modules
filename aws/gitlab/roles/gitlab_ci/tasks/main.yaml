@@ -53,6 +53,10 @@
   shell: |
     openssl s_client -showcerts {{ server_hostname }}:443 2>/dev/null < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/{{ server_hostname }}.crt
 
+- name: update concurrent setting
+  shell: |
+    sed -i 's/concurrent = 1/concurrent = 4/g' /etc/gitlab-runner/config.toml
+
 - name: Start Gitlab Runner
   command: "gitlab-runner start"
 
