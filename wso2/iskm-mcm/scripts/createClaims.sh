@@ -1,15 +1,17 @@
 #! /bin/bash
 
-while getopts h:r:u:p: option; do
-    case "${option}" in
-    h) host=${OPTARG} ;;
-    r) port=${OPTARG} ;;
-    u) username=${OPTARG} ;;
-    p) password=${OPTARG} ;;
-    esac
+while getopts h:r:u:p: option
+do	
+    case "${option}" in	
+        h) host=${OPTARG};;
+        r) port=${OPTARG};;
+        u) username=${OPTARG};;        	
+        p) password=${OPTARG};;
+    esac	
 done
 
-if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ]; then
+if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] 
+then
     echo " "
     echo "Missing arguments"
     echo "usage: ./createClaims.sh -h host -r port -u username -p password"
@@ -37,6 +39,8 @@ soapResponse=$(curl -s -X POST -k \
     https://$host:$port/services/ClaimMetadataManagementService.ClaimMetadataManagementServiceHttpsSoap12Endpoint/ \
     --insecure)
 
+
+
 ###################################################################################################
 ######     2fa-enrolled (local)                                                               #####
 ###################################################################################################
@@ -51,6 +55,8 @@ soapResponse=$(curl -s -X POST -k \
     --data @claims/2fa-enrolled.xml \
     https://$host:$port/services/ClaimMetadataManagementService.ClaimMetadataManagementServiceHttpsSoap12Endpoint/ \
     --insecure)
+
+
 
 ###################################################################################################
 ######     2fa-enrolled (external)                                                            #####
@@ -67,11 +73,13 @@ soapResponse=$(curl -s -X POST -k \
     https://$host:$port/services/ClaimMetadataManagementService.ClaimMetadataManagementServiceHttpsSoap12Endpoint/ \
     --insecure)
 
+
+
 ###################################################################################################
 ######     askPassword (local)                                                                #####
 ###################################################################################################
 
-# echo ""
+# echo "" 
 # echo "Verifying claim: Ask Password"
 
 soapResponse=$(curl -s -X POST -k \
@@ -119,6 +127,7 @@ soapResponse=$(curl -s -X POST -k \
     https://$host:$port/services/ClaimMetadataManagementService.ClaimMetadataManagementServiceHttpsSoap12Endpoint/ \
     --insecure)
 
+
 ###################################################################################################
 ######     role                                                                        #####
 ###################################################################################################
@@ -140,4 +149,8 @@ soapResponse=$(curl -s -X POST -k \
 #     *)                          echo "- error occurred during creation";;
 # esac
 
+
 # echo ""
+
+
+

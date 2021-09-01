@@ -6,16 +6,18 @@ echo "WSO2 Service Provider Registration"
 BASEDIR=$(dirname "$0")
 #echo "$BASEDIR"
 
-while getopts h:r:u:p: option; do
-    case "${option}" in
-    h) hostname=${OPTARG} ;;
-    r) port=${OPTARG} ;;
-    u) username=${OPTARG} ;;
-    p) password=${OPTARG} ;;
-    esac
+while getopts h:r:u:p: option
+do	
+    case "${option}" in	
+        h) hostname=${OPTARG};;
+        r) port=${OPTARG};;
+        u) username=${OPTARG};;        	
+        p) password=${OPTARG};;        	   	
+    esac	
 done
 
-if [ -z $hostname ] || [ -z $port ] || [ -z $username ] || [ -z $password ]; then
+if [ -z $hostname ] || [ -z $port ] || [ -z $username ] || [ -z $password ] 
+then
     echo " "
     echo "Missing arguments"
     echo "usage: ./registerServiceProvider.sh -h hostname -r port -u username -p password"
@@ -23,10 +25,10 @@ if [ -z $hostname ] || [ -z $port ] || [ -z $username ] || [ -z $password ]; the
     exit
 fi
 
-log_error() {
+log_error(){  
     if [ $# == 1 ]; then
         if [ $1 != 0 ]; then
-            #echo "Error occurred while connecting to the WSO2 service"
+            #echo "Error occurred while connecting to the WSO2 service"            
             echo "$1"
         else
             echo "$2"
@@ -40,6 +42,7 @@ client_name="MCM_portal"
 grant_types="password"
 
 auth_header=$(echo $username:$password | base64)
+
 
 #initialise script variables from environment.serviceprovider.config file
 #service_provider_configuration_file_name="$BASEDIR/$environment.serviceprovider.config"

@@ -1,14 +1,16 @@
 #!/bin/bash
 
 if [ ! -z "$DEBUG" ]; then
-    set -x
+  set -x
 fi
 
 createServiceProvider="y"
 
 eval "$(jq -r '@sh "host=\(.host) port=\(.rest_port) username=\(.admin_user) password=\(.admin_pass) createServiceProvider=\(.create_service_provider)"')"
 
-if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] || [ -z $createServiceProvider ]; then
+
+if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] || [ -z $createServiceProvider ]
+then
     echo " "
     echo "Missing arguments"
     echo " "
@@ -23,14 +25,17 @@ auth=$(printf '%s' $username:$password | base64)
 # echo ""
 # echo "Step 1: Creating claims"
 
+
 # ./deleteServiceProvider.sh -h $host -r $port -u $username -p $password
 # ./cleanupClaims.sh -h $host -r $port -u $username -p $password
 
 ./createClaims.sh -h $host -r $port -u $username -p $password
 
+
 # echo ""
 # echo "Step 2: Updating OIDC scopes"
 ./updateScopes.sh -h $host -r $port -u $username -p $password
+
 
 # echo ""
 # echo "Step 3: Registering service provider"
@@ -65,4 +70,4 @@ consumerKey=$(echo $soapResponse | grep -oPm1 "(?<=oauthConsumerKey>)[^<]+")
 # echo ""
 # echo "Configuration complete"
 
-jq -n --arg oauthConsumerSecret $oauthConsumerSecret --arg consumerKey $consumerKey '{"oauthConsumerSecret":$oauthConsumerSecret,"consumerKey":$consumerKey}' >iskm_result
+jq -n --arg oauthConsumerSecret $oauthConsumerSecret --arg consumerKey $consumerKey '{"oauthConsumerSecret":$oauthConsumerSecret,"consumerKey":$consumerKey}'

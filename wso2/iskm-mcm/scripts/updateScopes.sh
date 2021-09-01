@@ -1,15 +1,17 @@
 #! /bin/bash
 
-while getopts h:r:u:p: option; do
-    case "${option}" in
-    h) host=${OPTARG} ;;
-    r) port=${OPTARG} ;;
-    u) username=${OPTARG} ;;
-    p) password=${OPTARG} ;;
-    esac
+while getopts h:r:u:p: option
+do	
+    case "${option}" in	
+        h) host=${OPTARG};;
+        r) port=${OPTARG};;
+        u) username=${OPTARG};;        	
+        p) password=${OPTARG};;
+    esac	
 done
 
-if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ]; then
+if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] 
+then
     echo " "
     echo "Missing arguments"
     echo "usage: ./createClaims.sh -h host -r port -u username -p password"
@@ -35,6 +37,7 @@ soapResponse=$(curl -s -X POST -k \
     https://$host:$port/services/OAuthAdminService.OAuthAdminServiceHttpsSoap12Endpoint/ \
     --insecure)
 
+
 # echo "- adding claims"
 
 soapResponse=$(curl -s -X POST -k \
@@ -44,3 +47,5 @@ soapResponse=$(curl -s -X POST -k \
     --data @scopes/openidAdd.xml \
     https://$host:$port/services/OAuthAdminService.OAuthAdminServiceHttpsSoap12Endpoint/ \
     --insecure)
+
+

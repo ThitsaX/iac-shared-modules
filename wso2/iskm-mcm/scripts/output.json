@@ -1,4 +1,1 @@
-{
-  "oauthConsumerSecret": "test-secret",
-  "consumerKey": "test-key"
-}
+{"oauthConsumerSecret":"test-secret","consumerKey":"test-key"}

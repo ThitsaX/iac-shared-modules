@@ -1,16 +1,18 @@
 #! /bin/bash
 
-while getopts h:r:u:p:n: option; do
-    case "${option}" in
-    h) host=${OPTARG} ;;
-    r) port=${OPTARG} ;;
-    u) username=${OPTARG} ;;
-    p) password=${OPTARG} ;;
-    n) applicationname=${OPTARG} ;;
-    esac
+while getopts h:r:u:p:n: option
+do	
+    case "${option}" in	
+        h) host=${OPTARG};;
+        r) port=${OPTARG};;
+        u) username=${OPTARG};;        	
+        p) password=${OPTARG};;
+        n) applicationname=${OPTARG};;
+    esac	
 done
 
-if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ]; then
+if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] 
+then
     echo " "
     echo "Missing arguments"
     echo "usage: ./deleteServiceProvider.sh -h host -r port -u username -p password -n applicationname"
@@ -30,7 +32,7 @@ auth=$(printf '%s' $username:$password | base64)
 # echo ""
 # echo "Deleting application: $applicationname"
 
-cp serviceProviders/deleteApplication.xml serviceProviders/deleteApplicationTemp.xml
+cp serviceProviders/deleteApplication.xml serviceProviders/deleteApplicationTemp.xml 
 sed -i "s/@appname@/$applicationname/g" serviceProviders/deleteApplicationTemp.xml
 
 soapResponse=$(curl -s -X POST -k \
@@ -40,7 +42,7 @@ soapResponse=$(curl -s -X POST -k \
     https://$host:$port/services/IdentityApplicationManagementService.IdentityApplicationManagementServiceHttpsSoap12Endpoint/ \
     --insecure)
 
-# rm serviceProviders/deleteApplicationTemp.xml
+# rm serviceProviders/deleteApplicationTemp.xml 
 
 # echo "- service provider removed"
 # echo ""

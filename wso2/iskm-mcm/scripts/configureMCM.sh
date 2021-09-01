@@ -2,17 +2,19 @@
 
 createServiceProvider="y"
 
-while getopts h:r:u:p:c: option; do
-    case "${option}" in
-    h) host=${OPTARG} ;;
-    r) port=${OPTARG} ;;
-    u) username=${OPTARG} ;;
-    p) password=${OPTARG} ;;
-    c) createServiceProvider=${OPTARG} ;;
-    esac
+while getopts h:r:u:p:c: option
+do	
+    case "${option}" in	
+        h) host=${OPTARG};;
+        r) port=${OPTARG};;
+        u) username=${OPTARG};;        	
+        p) password=${OPTARG};;
+        c) createServiceProvider=${OPTARG};;
+    esac	
 done
 
-if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] || [ -z $createServiceProvider ]; then
+if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] || [ -z $createServiceProvider ]
+then
     echo " "
     echo "Missing arguments"
     echo "usage: ./createClaims.sh -h host -r port -u username -p password -c createServiceProvider (y/n)"
@@ -30,9 +32,11 @@ echo "Step 1: Creating claims"
 
 ./createClaims.sh -h $host -r $port -u $username -p $password
 
+
 echo ""
 echo "Step 2: Updating OIDC scopes"
 ./updateScopes.sh -h $host -r $port -u $username -p $password
+
 
 echo ""
 echo "Step 3: Registering service provider"
