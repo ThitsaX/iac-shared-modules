@@ -1,10 +1,3 @@
-/**
- * # WSO2 Internal Gateway Simulator Post Install Configuration
- *
- * Configure APIs on the Internal Gateway for each of the provided simulators
- *
- */
-
 locals {
   callback_env = {
     internal_gateway_hostname            = var.intgw_fqdn
@@ -18,13 +11,13 @@ locals {
 }
 
 resource "local_file" "sim_api_template" {
-  for_each        = var.test_user_details
+  for_each = var.test_user_details
   content         = templatefile("${path.module}/scripts/callbacks.tpl", { sim_name = "${each.value.sim_name}", host = "${each.value.sim_name}", sim_url = "${each.value.sim_callback_url}" })
   filename        = "${path.module}/scripts/callback/${var.environment}-${each.key}.api_template.json"
   file_permission = "0644"
 }
 
-resource "null_resource" "callback" {
+resource "null_resource" "callback" { 
   for_each = var.test_user_details
   triggers = {
     id = uuid()

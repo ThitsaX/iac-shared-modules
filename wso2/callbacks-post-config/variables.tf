@@ -35,7 +35,7 @@ variable "password" {
 
 variable "test_user_details" {
   description = "map of test account details"
-  type        = map(any)
+  type        = map
 }
 
 variable "intgw_state" {
