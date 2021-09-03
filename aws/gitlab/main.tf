@@ -120,13 +120,13 @@ resource "aws_instance" "gitlab-server" {
   tags                        = merge({ Snapshot = var.fqdn }, module.label.tags)
   volume_tags                 = merge({ Snapshot = var.fqdn }, module.label.tags)
   root_block_device {
-    delete_on_termination = false
+    delete_on_termination = var.delete_storage_on_term
     volume_type           = "gp2"
     volume_size           = 100
   }
 
   ebs_block_device {
-    delete_on_termination = false
+    delete_on_termination = var.delete_storage_on_term
     device_name           = "/dev/xvdb"
     volume_type           = "gp2"
     volume_size           = 100
@@ -160,7 +160,7 @@ resource "aws_instance" "gitlab-ci" {
   tags                        = merge(module.label.tags, { "Name" = "gitlab-runner" })
   volume_tags                 = merge({ Snapshot = var.fqdn }, module.label.tags)
   root_block_device {
-    delete_on_termination = false
+    delete_on_termination = var.delete_storage_on_term
     volume_type           = "gp2"
     volume_size           = 40
   }

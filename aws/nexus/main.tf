@@ -135,7 +135,7 @@ resource "aws_instance" "nexus" {
   tags                        = merge({ Name = "nexus" }, module.label.tags)
   volume_tags                 = merge({ Name = "nexus" }, module.label.tags)
   root_block_device {
-    delete_on_termination = false
+    delete_on_termination = var.delete_storage_on_term
     volume_type           = "gp2"
     volume_size           = 100
   }

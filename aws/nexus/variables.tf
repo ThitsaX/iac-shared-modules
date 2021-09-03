@@ -96,3 +96,9 @@ variable "nexus_admin_password" {
   description = "nexus admin password, if blank, random pw will be generated"
   default = ""
 }
+
+variable "delete_storage_on_term" {
+  type        = bool
+  description = "should storage be deleted on term"
+  default = true
+}

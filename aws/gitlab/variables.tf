@@ -110,3 +110,9 @@ variable "use_letsencrypt_staging" {
   default     = false
   description = "use staging instead of prod letsencrypt endpoint"
 }
+
+variable "delete_storage_on_term" {
+  type        = bool
+  description = "should storage be deleted on term"
+  default = true
+}
