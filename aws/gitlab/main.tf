@@ -205,6 +205,7 @@ resource "local_file" "ansible-inventory" {
 resource "random_password" "gitlab_root_password" {
   length = 16
   special = true
+  override_special = "$!"
 }
 
 resource "null_resource" "configure-gitlab" {
