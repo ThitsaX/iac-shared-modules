@@ -82,6 +82,7 @@ resource "aws_lb_listener" "nlb" {
       "Name" = "nlb-wireguard"
     }
   )
+  depends_on = [aws_acm_certificate_validation.cert]
 
 }
 
