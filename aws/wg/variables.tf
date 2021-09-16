@@ -21,6 +21,10 @@ variable "subnet_id" {
   description = "Id of the subnet used by this instance"
 }
 
+variable "vpc_id" {
+  description = "Id of the vpc used by this instance"
+}
+
 variable "tags" {
   description = "Any additional tags that we might want to pass on"
   default     = { Name = "Wireguard" }
@@ -32,4 +36,8 @@ variable "ssh_key" {
 
 variable "ui_admin_pw" {
   description = "admin pw for ui"
+}
+
+variable "cert_domain" {
+  description = "domain for cert for tls offloading"
 }
