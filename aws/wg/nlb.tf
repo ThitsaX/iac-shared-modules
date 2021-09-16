@@ -3,8 +3,8 @@ resource "aws_route53_record" "wireguard-dns" {
   name    = "wireguard.${var.cert_domain}"
   type    = "A"
   alias {
-    name                   = aws_alb.nlb.dns_name
-    zone_id                = aws_alb.nlb.zone_id
+    name                   = aws_lb.nlb.dns_name
+    zone_id                = aws_lb.nlb.zone_id
     evaluate_target_health = false
   }
 }
@@ -105,11 +105,11 @@ resource "aws_lb_listener" "port_51820" {
 resource "aws_lb_target_group" "wireguard-51820" {
   port     = 51820
   protocol = "UDP"
-  vpc_id   = module.vpc.vpc_id
+  vpc_id   = var.vpc_id
 
   # TODO: can't health check against a UDP port, but need to have a health check when backend is an instance. 
   # check tcp port 5000 (ui) for now
-
+  health_check {
     protocol = "TCP"
     port     = 5000
   }
@@ -149,11 +149,11 @@ resource "aws_lb_target_group" "wireguard-5000" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "wg-attachment" { 
+resource "aws_lb_target_group_attachment" "wg-attachment-5000" { 
   target_group_arn = aws_lb_target_group.wireguard-5000.arn
   target_id        = aws_instance.wireguard.id
 }
-resource "aws_lb_target_group_attachment" "wg-attachment" { 
+resource "aws_lb_target_group_attachment" "wg-attachment-51820" { 
   target_group_arn = aws_lb_target_group.wireguard-51820.arn
   target_id        = aws_instance.wireguard.id
 }
