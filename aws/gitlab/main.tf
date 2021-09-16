@@ -25,12 +25,12 @@ module "ssh_key_pair" {
 }
 
 resource "aws_iam_instance_profile" "default" {
-  name = "${replace(var.domain, ".", "-")}-gitlab"
+  name = "${replace(var.domain, ".", "-")}-${var.tenant}-gitlab"
   role = aws_iam_role.default.name
 }
 
 resource "aws_iam_role" "default" {
-  name = "${replace(var.domain, ".", "-")}-gitlab"
+  name = "${replace(var.domain, ".", "-")}-${var.tenant}-gitlab"
   path = "/"
 
   assume_role_policy = data.aws_iam_policy_document.default.json

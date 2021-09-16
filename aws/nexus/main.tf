@@ -46,12 +46,12 @@ resource "local_file" "nexus_provisioner_public_key" {
 }
 
 resource "aws_iam_instance_profile" "default" {
-  name = "${replace(var.domain, ".", "-")}-nexus"
+  name = "${replace(var.domain, ".", "-")}-${var.tenant}-nexus"
   role = aws_iam_role.default.name
 }
 
 resource "aws_iam_role" "default" {
-  name = "${replace(var.domain, ".", "-")}-nexus"
+  name = "${replace(var.domain, ".", "-")}-${var.tenant}-nexus"
   path = "/"
 
   assume_role_policy = data.aws_iam_policy_document.default.json

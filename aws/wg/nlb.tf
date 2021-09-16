@@ -43,7 +43,7 @@ resource "aws_lb_listener" "nlb" {
 
   load_balancer_arn = aws_lb.nlb.arn
   port              = "443"
-  protocol          = "HTTPS"
+  protocol          = "TLS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn   = aws_acm_certificate.wireguard-cert.arn
 

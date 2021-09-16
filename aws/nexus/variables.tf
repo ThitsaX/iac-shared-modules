@@ -102,3 +102,8 @@ variable "delete_storage_on_term" {
   description = "should storage be deleted on term"
   default = true
 }
+
+variable "tenant" {
+  type        = string
+  description = "tenancy name"
+}
