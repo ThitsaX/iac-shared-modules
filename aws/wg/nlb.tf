@@ -1,3 +1,14 @@
+resource "aws_route53_record" "wireguard-dns" {
+  zone_id = var.zone_id
+  name    = "wireguard.${var.cert_domain}"
+  type    = "A"
+  alias {
+    name                   = aws_alb.nlb.dns_name
+    zone_id                = aws_alb.nlb.zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_eip" "nlb" {
   tags = merge(
     var.tags,
@@ -8,7 +19,7 @@ resource "aws_eip" "nlb" {
 }
 
 resource "aws_acm_certificate" "wireguard-cert" {
-  domain_name       = var.cert_domain
+  domain_name       = aws_route53_record.wireguard-dns.fqdn
   validation_method = "DNS"
 
   tags = merge(
@@ -21,6 +32,20 @@ resource "aws_acm_certificate" "wireguard-cert" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "aws_route53_record" "cert_validation" {
+  allow_overwrite = true
+  name            = tolist(aws_acm_certificate.wireguard-cert.domain_validation_options)[0].resource_record_name
+  records         = [ tolist(aws_acm_certificate.wireguard-cert.domain_validation_options)[0].resource_record_value ]
+  type            = tolist(aws_acm_certificate.wireguard-cert.domain_validation_options)[0].resource_record_type
+  zone_id  = var.zone_id
+  ttl      = 60
+}
+
+resource "aws_acm_certificate_validation" "cert" {
+  certificate_arn         = aws_acm_certificate.wireguard-cert.arn
+  validation_record_fqdns = [ aws_route53_record.cert_validation.fqdn ]
 }
 
 resource "aws_lb" "nlb" {
@@ -51,7 +76,50 @@ resource "aws_lb_listener" "nlb" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.wireguard-5000.arn
   }
+  tags = merge(
+    var.tags,
+    {
+      "Name" = "nlb-wireguard"
+    }
+  )
 
+}
+
+resource "aws_lb_listener" "port_51820" {
+  load_balancer_arn = aws_lb.nlb.arn
+  port              = "51820"
+  protocol          = "UDP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.wireguard-51820.arn
+  }
+  tags = merge(
+    var.tags,
+    {
+      "Name" = "nlb-wireguard"
+    }
+  )
+}
+
+resource "aws_lb_target_group" "wireguard-51820" {
+  port     = 51820
+  protocol = "UDP"
+  vpc_id   = module.vpc.vpc_id
+
+  # TODO: can't health check against a UDP port, but need to have a health check when backend is an instance. 
+  # check tcp port 5000 (ui) for now
+
+    protocol = "TCP"
+    port     = 5000
+  }
+
+  tags = merge(
+    var.tags,
+    {
+      "Name" = "nlb-wireguard"
+    }
+  )
 }
 
 resource "aws_lb_target_group" "wireguard-5000" {
@@ -83,5 +151,9 @@ resource "aws_lb_target_group" "wireguard-5000" {
 
 resource "aws_lb_target_group_attachment" "wg-attachment" { 
   target_group_arn = aws_lb_target_group.wireguard-5000.arn
+  target_id        = aws_instance.wireguard.id
+}
+resource "aws_lb_target_group_attachment" "wg-attachment" { 
+  target_group_arn = aws_lb_target_group.wireguard-51820.arn
   target_id        = aws_instance.wireguard.id
 }

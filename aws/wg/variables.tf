@@ -3,6 +3,11 @@ variable "ami_id" {
   type = string
 }
 
+variable "zone_id" {
+  description = "zone Id of route53 to use"
+  type = string
+}
+
 variable "instance_type" {
   description = "Size of the EC2 instance"
   type = string
