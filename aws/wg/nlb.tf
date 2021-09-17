@@ -51,6 +51,7 @@ resource "aws_acm_certificate_validation" "cert" {
 resource "aws_lb" "nlb" {
   name               = "nlb-wireguard"
   load_balancer_type = "network"
+  security_groups    = [aws_security_group.alb_sg.id]
   subnet_mapping {
     subnet_id     = var.subnet_id
     allocation_id = aws_eip.nlb.id
