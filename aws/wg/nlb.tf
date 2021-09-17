@@ -104,15 +104,20 @@ resource "aws_lb_listener" "port_51820" {
 }
 
 resource "aws_lb_target_group" "wireguard-51820" {
-  port     = 51820
-  protocol = "UDP"
-  vpc_id   = var.vpc_id
+  port                  = 51820
+  protocol              = "UDP"
+  vpc_id                = var.vpc_id
+  target_type           = "ip"
+  deregistration_delay  = 90
 
   # TODO: can't health check against a UDP port, but need to have a health check when backend is an instance. 
   # check tcp port 5000 (ui) for now
   health_check {
-    protocol = "TCP"
-    port     = 5000
+    interval            = 10
+    port                = 5000
+    protocol             = "TCP"
+    healthy_threshold    = 3
+    unhealthy_threshold  = 3
   }
 
   tags = merge(
@@ -128,7 +133,7 @@ resource "aws_lb_target_group" "wireguard-5000" {
   port                 = 5000
   protocol             = "TCP"
   vpc_id               = var.vpc_id
-  target_type          = "instance"
+  target_type          = "ip"
   deregistration_delay = 90
 
   health_check {
