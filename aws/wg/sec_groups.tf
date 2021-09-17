@@ -43,21 +43,21 @@ resource "aws_security_group" "wireguard_sg" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups = ["0.0.0.0/0"]
   }
 
   ingress {
     from_port   = "51820"
     to_port     = "51820"
     protocol    = "udp"
-    cidr_blocks = [aws_security_group.alb_sg.id]
+    security_groups = [aws_security_group.alb_sg.id]
   }
 
   ingress {
     from_port   = "5000"
     to_port     = "5000"
     protocol    = "tcp"
-    cidr_blocks = [aws_security_group.alb_sg.id]
+    security_groups = [aws_security_group.alb_sg.id]
   }
 
   tags = merge({}, var.tags)
