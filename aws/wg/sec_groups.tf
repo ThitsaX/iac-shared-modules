@@ -43,9 +43,14 @@ resource "aws_security_group" "wireguard_sg" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    security_groups = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
-
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    security_groups = [aws_security_group.alb_sg.id]
+  }
   ingress {
     from_port   = "51820"
     to_port     = "51820"
