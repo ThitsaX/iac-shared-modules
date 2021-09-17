@@ -21,6 +21,7 @@ resource "aws_instance" "wireguard" {
   key_name                    = var.ssh_key_name
   vpc_security_group_ids      = [aws_security_group.wireguard_sg.id]
   subnet_id                   = var.subnet_id
+  associate_public_ip_address = true
 
   tags = merge({
     Name = "wireguard"
