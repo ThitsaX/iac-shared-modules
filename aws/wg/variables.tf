@@ -18,10 +18,6 @@ variable "ssh_key_name" {
   type = string
 }
 
-variable "security_groups" {
-  description = "security groups attached to this server"
-}
-
 variable "subnet_id" {
   description = "Id of the subnet used by this instance"
 }
@@ -45,4 +41,8 @@ variable "ui_admin_pw" {
 
 variable "cert_domain" {
   description = "domain for cert for tls offloading"
+}
+
+variable "wireguard_tenancy_name" {
+  description = "name to distinguish tenancy"
 }
