@@ -29,7 +29,7 @@ resource "aws_security_group" "wireguard_sg" {
     from_port   = "51820"
     to_port     = "51820"
     protocol    = "udp"
-    cidr_blocks = [data.aws_subnet.selected.cidr_block]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {

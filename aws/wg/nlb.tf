@@ -107,7 +107,7 @@ resource "aws_lb_target_group" "wireguard-51820" {
   port                  = 51820
   protocol              = "UDP"
   vpc_id                = var.vpc_id
-  target_type           = "ip"
+  target_type           = "instance"
   deregistration_delay  = 90
 
   # TODO: can't health check against a UDP port, but need to have a health check when backend is an instance. 
@@ -161,5 +161,5 @@ resource "aws_lb_target_group_attachment" "wg-attachment-5000" {
 }
 resource "aws_lb_target_group_attachment" "wg-attachment-51820" { 
   target_group_arn = aws_lb_target_group.wireguard-51820.arn
-  target_id        = aws_instance.wireguard.private_ip
+  target_id        = aws_instance.wireguard.id
 }
