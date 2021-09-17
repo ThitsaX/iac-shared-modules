@@ -152,9 +152,9 @@ resource "aws_lb_target_group" "wireguard-5000" {
 
 resource "aws_lb_target_group_attachment" "wg-attachment-5000" { 
   target_group_arn = aws_lb_target_group.wireguard-5000.arn
-  target_id        = aws_instance.wireguard.id
+  target_id        = aws_instance.wireguard.private_ip
 }
 resource "aws_lb_target_group_attachment" "wg-attachment-51820" { 
   target_group_arn = aws_lb_target_group.wireguard-51820.arn
-  target_id        = aws_instance.wireguard.id
+  target_id        = aws_instance.wireguard.private_ip
 }
