@@ -49,7 +49,7 @@ resource "aws_acm_certificate_validation" "cert" {
 }
 
 resource "aws_lb" "nlb" {
-  name               = "nlb-wireguard"
+  name               = "nlb-wireguard-${var.wireguard_tenancy_name}"
   load_balancer_type = "network"
   subnet_mapping {
     subnet_id     = var.subnet_id
