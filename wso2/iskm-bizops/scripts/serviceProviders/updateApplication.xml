@@ -10,31 +10,21 @@
                <xsd1:alwaysSendMappedLocalSubjectId>false</xsd1:alwaysSendMappedLocalSubjectId>
                <xsd1:claimMappings>
                   <xsd1:localClaim>
-                     <xsd1:claimUri>http://wso2.org/claims/2fa-enrolled</xsd1:claimUri>
+                     <xsd1:claimUri>http://wso2.org/claims/fullname</xsd1:claimUri>
                   </xsd1:localClaim>
                   <xsd1:mandatory>true</xsd1:mandatory>
                   <xsd1:remoteClaim>
-                     <xsd1:claimUri>2fa-enrolled</xsd1:claimUri>
+                     <xsd1:claimUri>http://wso2.org/claims/fullname</xsd1:claimUri>
                   </xsd1:remoteClaim>
                   <xsd1:requested>true</xsd1:requested>
                </xsd1:claimMappings>
                <xsd1:claimMappings>
                   <xsd1:localClaim>
-                     <xsd1:claimUri>http://wso2.org/claims/role</xsd1:claimUri>
+                     <xsd1:claimUri>http://wso2.org/claims/emailaddress</xsd1:claimUri>
                   </xsd1:localClaim>
                   <xsd1:mandatory>true</xsd1:mandatory>
                   <xsd1:remoteClaim>
-                     <xsd1:claimUri>role</xsd1:claimUri>
-                  </xsd1:remoteClaim>
-                  <xsd1:requested>true</xsd1:requested>
-               </xsd1:claimMappings>
-               <xsd1:claimMappings>
-                  <xsd1:localClaim>
-                     <xsd1:claimUri>http://wso2.org/claims/identity/askPassword</xsd1:claimUri>
-                  </xsd1:localClaim>
-                  <xsd1:mandatory>true</xsd1:mandatory>
-                  <xsd1:remoteClaim>
-                     <xsd1:claimUri>askPassword</xsd1:claimUri>
+                     <xsd1:claimUri>http://wso2.org/claims/emailaddress</xsd1:claimUri>
                   </xsd1:remoteClaim>
                   <xsd1:requested>true</xsd1:requested>
                </xsd1:claimMappings>
@@ -44,7 +34,7 @@
                <xsd1:roleClaimURI>role</xsd1:roleClaimURI>
                <!--Optional:-->
                <xsd1:userClaimURI>user</xsd1:userClaimURI>
-               <xsd1:subjectClaimUri>http://wso2.org/claims/username</xsd1:subjectClaimUri>
+               <xsd1:subjectClaimUri>http://wso2.org/claims/userid</xsd1:subjectClaimUri>
             </xsd1:claimConfig>
             <!--Optional:-->
             <xsd1:description>Authentication service provider for MCM portal</xsd1:description>
@@ -90,9 +80,9 @@
             <xsd1:localAndOutBoundAuthenticationConfig>
                <xsd1:alwaysSendBackAuthenticatedListOfIdPs>false</xsd1:alwaysSendBackAuthenticatedListOfIdPs>
                <xsd1:authenticationStepForAttributes></xsd1:authenticationStepForAttributes>
-               <xsd1:authenticationStepForSubject>http://wso2.org/claims/username</xsd1:authenticationStepForSubject>
+               <xsd1:authenticationStepForSubject>http://wso2.org/claims/userid</xsd1:authenticationStepForSubject>
                <xsd1:authenticationType>default</xsd1:authenticationType>
-               <xsd1:subjectClaimUri>http://wso2.org/claims/username</xsd1:subjectClaimUri>
+               <xsd1:subjectClaimUri>http://wso2.org/claims/userid</xsd1:subjectClaimUri>
                <xsd1:useTenantDomainInLocalSubjectIdentifier>false</xsd1:useTenantDomainInLocalSubjectIdentifier>
                <xsd1:useUserstoreDomainInLocalSubjectIdentifier>false</xsd1:useUserstoreDomainInLocalSubjectIdentifier>
                <xsd1:useUserstoreDomainInRoles>true</xsd1:useUserstoreDomainInRoles>

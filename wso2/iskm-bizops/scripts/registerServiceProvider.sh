@@ -1,20 +1,21 @@
 #! /bin/bash
 
-while getopts h:r:u:p: option
+while getopts h:r:u:p:c: option
 do	
     case "${option}" in	
         h) host=${OPTARG};;
         r) port=${OPTARG};;
         u) username=${OPTARG};;        	
         p) password=${OPTARG};;
+        c) callback_url=${OPTARG};;
     esac	
 done
 
-if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] 
+if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] || [ -z $callback_url ] 
 then
     echo " "
     echo "Missing arguments"
-    echo "usage: ./registerServiceProvider.sh -h host -r port -u username -p password"
+    echo "usage: ./registerServiceProvider.sh -h host -r port -u username -p password -c callback_url"
     echo " "
     exit 1
 fi
@@ -30,11 +31,16 @@ auth=$(printf '%s' $username:$password | base64)
 
 # echo ""
 # echo "Creating application: BOF_portal"
+cp serviceProviders/registerOAuthApplicationData.xml serviceProviders/registerOAuthApplicationDataTemp.xml
+# echo " - updating template"
+
+sed -i "s,@callbackurl@,$callback_url,g" serviceProviders/registerOAuthApplicationDataTemp.xml
+
 
 soapResponse=$(curl -s -X POST -k \
     -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:registerOAuthApplicationData\"" \
     -H "Authorization: Basic $auth" \
-    --data @serviceProviders/registerOAuthApplicationData.xml \
+    --data @serviceProviders/registerOAuthApplicationDataTemp.xml \
     https://$host:$port/services/services/OAuthAdminService.OAuthAdminServiceHttpsSoap12Endpoint/ \
     --insecure)
 

@@ -6,10 +6,10 @@ fi
 
 createServiceProvider="y"
 
-eval "$(jq -r '@sh "host=\(.host) port=\(.rest_port) username=\(.admin_user) password=\(.admin_pass) createServiceProvider=\(.create_service_provider)"')"
+eval "$(jq -r '@sh "host=\(.host) port=\(.rest_port) username=\(.admin_user) password=\(.admin_pass) createServiceProvider=\(.create_service_provider) callbackURL=\(.callback_url)"')"
 
 
-if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] || [ -z $createServiceProvider ]
+if [ -z $host ] || [ -z $port ] || [ -z $username ] || [ -z $password ] || [ -z $createServiceProvider ] || [ -z $callbackURL ]
 then
     echo " "
     echo "Missing arguments"
@@ -25,7 +25,7 @@ auth=$(printf '%s' $username:$password | base64)
 # echo ""
 # echo "Step 1: Registering service provider"
 if [ "$createServiceProvider" = "y" ]; then
-    ./registerServiceProvider.sh -h $host -r $port -u $username -p $password
+    ./registerServiceProvider.sh -h $host -r $port -u $username -p $password -c $callbackURL
 fi
 
 # echo ""

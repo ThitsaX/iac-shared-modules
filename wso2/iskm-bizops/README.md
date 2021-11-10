@@ -24,6 +24,7 @@ Configuration management repo to configure WSO2 Identity Server (with Key Manage
 | iskm\_status | iskm install status | `string` | `"notused"` | no |
 | password | Passwrod to use when configuring WSO2 | `string` | `"admin"` | no |
 | user | Username to use when configuring WSO2 | `string` | `"admin"` | no |
+| callback_url | Callback URL for oAuth | `string` | n/a | no |
 
 ## Outputs
 
