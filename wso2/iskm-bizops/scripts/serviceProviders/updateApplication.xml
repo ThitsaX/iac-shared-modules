@@ -10,16 +10,6 @@
                <xsd1:alwaysSendMappedLocalSubjectId>false</xsd1:alwaysSendMappedLocalSubjectId>
                <xsd1:claimMappings>
                   <xsd1:localClaim>
-                     <xsd1:claimUri>http://wso2.org/claims/fullname</xsd1:claimUri>
-                  </xsd1:localClaim>
-                  <xsd1:mandatory>true</xsd1:mandatory>
-                  <xsd1:remoteClaim>
-                     <xsd1:claimUri>http://wso2.org/claims/fullname</xsd1:claimUri>
-                  </xsd1:remoteClaim>
-                  <xsd1:requested>true</xsd1:requested>
-               </xsd1:claimMappings>
-               <xsd1:claimMappings>
-                  <xsd1:localClaim>
                      <xsd1:claimUri>http://wso2.org/claims/emailaddress</xsd1:claimUri>
                   </xsd1:localClaim>
                   <xsd1:mandatory>true</xsd1:mandatory>
