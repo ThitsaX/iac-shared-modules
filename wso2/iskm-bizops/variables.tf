@@ -28,6 +28,12 @@ variable "password" {
   default     = "admin"
 }
 
+variable "callback_url" {
+  description = "Callback URL for oAuth"
+  type        = string
+  default     = "admin"
+}
+
 variable "iskm_status" {
   description = "iskm install status"
   type        = string
