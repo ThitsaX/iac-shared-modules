@@ -1,0 +1,1 @@
+echo '{ "host": "localhost", "rest_port": "9443", "admin_user": "admin_pass", "password": "admin", "create_service_provider": "y" }' |./generateBizopsKeySecret.sh
