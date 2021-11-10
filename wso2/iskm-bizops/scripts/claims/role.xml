@@ -1,0 +1,50 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsd="http://org.apache.axis2/xsd" xmlns:xsd1="http://dto.mgt.metadata.claim.identity.carbon.wso2.org/xsd">
+   <soap:Header/>
+   <soap:Body>
+      <xsd:addLocalClaim>
+         <!--Optional:-->
+         <xsd:localClaim>
+            <!--Zero or more repetitions:-->
+            <xsd1:attributeMappings>
+               <!--Optional:-->
+               <xsd1:attributeName>role</xsd1:attributeName>
+               <!--Optional:-->
+               <xsd1:userStoreDomain>PRIMARY</xsd1:userStoreDomain>
+            </xsd1:attributeMappings>
+            <!--Zero or more repetitions:-->
+            <xsd1:claimProperties>
+               <!--Optional:-->
+               <xsd1:propertyName>ReadOnly</xsd1:propertyName>
+               <!--Optional:-->
+               <xsd1:propertyValue>true</xsd1:propertyValue>
+            </xsd1:claimProperties>
+            <xsd1:claimProperties>
+               <!--Optional:-->
+               <xsd1:propertyName>Description</xsd1:propertyName>
+               <!--Optional:-->
+               <xsd1:propertyValue>Role</xsd1:propertyValue>
+            </xsd1:claimProperties>
+            <xsd1:claimProperties>
+               <!--Optional:-->
+               <xsd1:propertyName>SupportedByDefault</xsd1:propertyName>
+               <!--Optional:-->
+               <xsd1:propertyValue>true</xsd1:propertyValue>
+            </xsd1:claimProperties>
+            <xsd1:claimProperties>
+               <!--Optional:-->
+               <xsd1:propertyName>DisplayName</xsd1:propertyName>
+               <!--Optional:-->
+               <xsd1:propertyValue>Role</xsd1:propertyValue>
+            </xsd1:claimProperties>
+            <xsd1:claimProperties>
+               <!--Optional:-->
+               <xsd1:propertyName>Required</xsd1:propertyName>
+               <!--Optional:-->
+               <xsd1:propertyValue>true</xsd1:propertyValue>
+            </xsd1:claimProperties>
+            <!--Optional:-->
+            <xsd1:localClaimURI>http://wso2.org/claims/role</xsd1:localClaimURI>
+         </xsd:localClaim>
+      </xsd:addLocalClaim>
+   </soap:Body>
+</soap:Envelope>

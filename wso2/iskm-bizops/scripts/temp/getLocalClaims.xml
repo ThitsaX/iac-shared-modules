@@ -1,0 +1,1433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+   <soapenv:Body>
+      <ns:getLocalClaimsResponse xmlns:ns="http://org.apache.axis2/xsd" xmlns:ax2387="http://exception.mgt.metadata.claim.identity.carbon.wso2.org/xsd" xmlns:ax2388="http://base.identity.carbon.wso2.org/xsd" xmlns:ax2391="http://dto.mgt.metadata.claim.identity.carbon.wso2.org/xsd">
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>region</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Claim to store the 2fa-enrolled flag</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>2fa-enrolled</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/2fa-enrolled</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>active</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Status of the account</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Active</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/active</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>addresses</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Address</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Address</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/addresses</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>formattedAddress</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Address - Formatted</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Address - Formatted</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/addresses.formatted</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>localityAddress</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Address - Locality</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Address - Locality</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/addresses.locality</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>firstChallenge</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Challenge Question1</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Challenge Question1</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/challengeQuestion1</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>secondChallenge</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Challenge Question2</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Challenge Question2</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/challengeQuestion2</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>challengeQuestionUris</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Challenge Question</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Challenge Question</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/challengeQuestionUris</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>costCenter</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Cost Center</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Cost Center</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/costCenter</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>country</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Country</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>5</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Country</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/country</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>createdDate</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>ReadOnly</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Created timestamp of the user</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Created Time</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/created</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>departmentNumber</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>ReadOnly</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Department</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Department</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/department</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>displayName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Display Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Display Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/displayName</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>dateOfBirth</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Birth Date</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Birth Date</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/dob</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>mail</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Email Address</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>6</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Required</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>RegEx</ax2391:propertyName>
+               <ax2391:propertyValue>^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/emailaddress</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>homeEmail</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Home Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Emails - Home Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/emails.home</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>otherEmail</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Other Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Emails - Other Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/emails.other</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>workEmail</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Work Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Emails - Work Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/emails.work</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>entitlements</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Entitlements</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Entitlements</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/entitlements</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>extendedDisplayName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Extended Display Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Extended Display Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/extendedDisplayName</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>extendedExternalId</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Extended External ID</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Extended External ID</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/extendedExternalId</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>extendedRef</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Extended Ref</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Extended Ref</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/extendedRef</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>externalId</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>ReadOnly</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Unique ID of the user used in external systems</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>External User ID</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/externalid</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>formattedName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Formatted Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Name - Formatted Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/formattedName</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>cn</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Full Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Full Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/fullname</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>gender</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Gender</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Gender</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/gender</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>givenName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>First Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>1</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Required</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>First Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/givenname</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>groups</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Groups</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Groups</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/groups</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>imGtalk</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>IM - Gtalk</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>IM - Gtalk</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/gtalk</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>honoricPrefix</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Honoric Prefix</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Name - Honoric Prefix</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/honorificPrefix</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>honoricSuffix</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Honoric Suffix</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Name - Honoric Suffix</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/honorificSuffix</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>accountDisabled</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Account Disabled</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Account Disabled</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/accountDisabled</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>accountLock</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Account Locked</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Account Locked</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/accountLocked</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>forcePasswordReset</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Temporary claim to invoke email force password feature</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Force Password Reset</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/adminForcedPasswordReset</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>askPassword</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Temporary claim to invoke email ask Password feature</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Ask Password</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/askPassword</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>emailVerified</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Email Verified</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Email Verified</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/emailVerified</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>failedLoginAttempts</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Failed Login Attempts</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Failed Login Attempts</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/failedLoginAttempts</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>failedLockoutCount</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Failed Lockout Count</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Failed Lockout Count</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/failedLoginLockoutCount</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>failedRecoveryAttempts</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Number of consecutive failed attempts done for password recovery</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Failed Password Recovery Attempts</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/failedPasswordRecoveryAttempts</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>lastLogonTime</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Last Logon Time</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Last Logon</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/lastLogonTime</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>lastPasswordUpdate</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Last Password Update Time</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Last Password Update</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/lastPasswordUpdateTime</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>lockedReason</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Locked Reason</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Locked Reason</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/lockedReason</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>phoneVerified</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Verified</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Verified</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/phoneVerified</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>stateOrProvinceName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Claim to store the TOTP 2FA secret key</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Secret Key</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/secretkey</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>unlockTime</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Unlock Time</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Unlock Time</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/unlockTime</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>verifyEmail</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Temporary claim to invoke email verified feature</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Verify Email</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/identity/verifyEmail</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>im</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>IM</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>9</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>IM</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/im</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>lastLoginTime</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Last Login Time</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Last Login</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/lastLoginTime</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>sn</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Last Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>2</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Required</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Last Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/lastname</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>local</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Local</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Local</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/local</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>local</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Locality</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Locality</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/locality</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>location</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Location</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Location</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/location</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>middleName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Middle Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Middle Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/middleName</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>mobile</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Mobile</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>8</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Mobile</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/mobile</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>lastModifiedDate</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>ReadOnly</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Last Modified timestamp of the user</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Last Modified Time</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/modified</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>nickName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Nick Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Nick Name</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/nickname</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>oneTimePassword</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>One Time Password</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>One Time Password</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/oneTimePassword</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>organizationName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Organization</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>3</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Organization</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/organization</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>otherPhone</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Other Phone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Other Phone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/otherphone</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>phoneNumbers</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Numbers</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>RegEx</ax2391:propertyName>
+               <ax2391:propertyValue>^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Numbers</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/phoneNumbers</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>fax</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Fax Number</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Numbers - Fax Number</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/phoneNumbers.fax</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>homePhone</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Home Phone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Numbers - Home Phone Number</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/phoneNumbers.home</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>otherPhoneNumber</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Other Phone Number</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Numbers - Other</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/phoneNumbers.other</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>pager</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Pager Number</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Numbers - Pager Number</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/phoneNumbers.pager</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>workPhone</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Work Phone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Phone Numbers - Work Phone Number</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/phoneNumbers.work</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>photos</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Photo</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Photo</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/photos</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>photoUrl</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Photo URL</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Photo URIL</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/photourl</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>postalcode</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Postal Code</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Postal Code</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/postalcode</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>preferredLanguage</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Preferred Language</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Preferred Language</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/preferredLanguage</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>primaryChallengeQuestion</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Primary Challenge Question</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Primary Challenge Question</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/primaryChallengeQuestion</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>region</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Region</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Region</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/region</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>ref</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Resource Type</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Resource Type</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/resourceType</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>role</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>ReadOnly</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Role</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Role</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/role</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>imSkype</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>IM - Skype</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>IM - Skype</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/skype</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>stateOrProvinceName</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>State</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>State</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/stateorprovince</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>streetAddress</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Address - Street</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>5</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Address - Street</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/streetaddress</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>telephoneNumber</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Telephone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>7</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Telephone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/telephone</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>thumbnail</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Photo - Thumbnail</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Photo - Thumbnail</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/thumbnail</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>timeZone</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Time Zone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Time Zone</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/timeZone</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>title</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Title</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Title</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/title</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>url</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>URL</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayOrder</ax2391:propertyName>
+               <ax2391:propertyValue>10</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>SupportedByDefault</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>URL</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/url</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>scimId</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>ReadOnly</ax2391:propertyName>
+               <ax2391:propertyValue>true</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Unique ID of the user</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>User ID</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/userid</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>uid</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>Username</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>Username</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/username</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>uid</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>User Principal</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>User Principal</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/userprincipal</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>userType</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>User Type</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>User Type</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/userType</ax2391:localClaimURI>
+         </ns:return>
+         <ns:return xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ax2391:LocalClaimDTO">
+            <ax2391:attributeMappings xsi:type="ax2391:AttributeMappingDTO">
+               <ax2391:attributeName>x509Certificates</ax2391:attributeName>
+               <ax2391:userStoreDomain>PRIMARY</ax2391:userStoreDomain>
+            </ax2391:attributeMappings>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>Description</ax2391:propertyName>
+               <ax2391:propertyValue>X509Certificates</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:claimProperties xsi:type="ax2391:ClaimPropertyDTO">
+               <ax2391:propertyName>DisplayName</ax2391:propertyName>
+               <ax2391:propertyValue>X509Certificates</ax2391:propertyValue>
+            </ax2391:claimProperties>
+            <ax2391:localClaimURI>http://wso2.org/claims/x509Certificates</ax2391:localClaimURI>
+         </ns:return>
+      </ns:getLocalClaimsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
