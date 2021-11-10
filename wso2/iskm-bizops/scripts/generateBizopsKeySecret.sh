@@ -23,40 +23,20 @@ fi
 auth=$(printf '%s' $username:$password | base64)
 
 # echo ""
-# echo "Step 1: Creating claims"
-
-
-# ./deleteServiceProvider.sh -h $host -r $port -u $username -p $password
-# ./cleanupClaims.sh -h $host -r $port -u $username -p $password
-
-./createClaims.sh -h $host -r $port -u $username -p $password
-
-
-# echo ""
-# echo "Step 2: Updating OIDC scopes"
-./updateScopes.sh -h $host -r $port -u $username -p $password
-
-
-# echo ""
-# echo "Step 3: Registering service provider"
+# echo "Step 1: Registering service provider"
 if [ "$createServiceProvider" = "y" ]; then
     ./registerServiceProvider.sh -h $host -r $port -u $username -p $password
 fi
 
 # echo ""
-# echo "Step 4: Create roles"
-
-./createRoles.sh -h $host -r $port -u $username -p $password
-
-# echo ""
-# echo "Step 5: get secret and key"
+# echo "Step 2: get secret and key"
 
 auth=$(printf '%s' $username:$password | base64)
 
 cp serviceProviders/getOAuthApplicationDataByAppName.xml serviceProviders/getOAuthApplicationDataByAppNameTemp.xml
 # echo " - updating template"
 
-sed -i 's/@appname@/MCM_portal/g' serviceProviders/getOAuthApplicationDataByAppNameTemp.xml
+sed -i 's/@appname@/BOF_portal/g' serviceProviders/getOAuthApplicationDataByAppNameTemp.xml
 
 soapResponse=$(curl -s -X POST -k \
     -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:getOAuthApplicationDataByAppName\"" \

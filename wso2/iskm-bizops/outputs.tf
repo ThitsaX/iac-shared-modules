@@ -1,8 +1,8 @@
-output "mcm-key" {
-  description = "key for mcm usage"
+output "consumer-key" {
+  description = "Client ID / Consumer Key for oAuth/OIDC usage"
   value = data.external.get_secret_and_key.result["consumerKey"]
 }
-output "mcm-secret" {
-  description = "secret for mcm usage"
+output "consumer-secret" {
+  description = "Client / Consumer secret for oAuth/OIDC usage"
   value = data.external.get_secret_and_key.result["oauthConsumerSecret"]
 }

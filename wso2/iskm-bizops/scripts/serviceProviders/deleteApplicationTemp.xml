@@ -1,9 +1,0 @@
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsd="http://org.apache.axis2/xsd">
-   <soap:Header/>
-   <soap:Body>
-      <xsd:deleteApplication>
-         <!--Optional:-->
-         <xsd:applicationName>MCM_portal</xsd:applicationName>
-      </xsd:deleteApplication>
-   </soap:Body>
-</soap:Envelope>

@@ -1,6 +1,6 @@
-# Automated ISKM to MCM integration
+# Automated ISKM for "Business Operations Framework"
 
-Configuration management repo to configure WSO2 Identity Server (with Key Management) to support OAuth2 integration for MCM
+Configuration management repo to configure WSO2 Identity Server (with Key Management) to support OAuth2 / OpenID Connect integration for "Business Operations Framework"
 
 ## Requirements
 
@@ -29,6 +29,6 @@ Configuration management repo to configure WSO2 Identity Server (with Key Manage
 
 | Name | Description |
 |------|-------------|
-| mcm-key | key for mcm usage |
-| mcm-secret | secret for mcm usage |
+| consumer-key | key for oauth2/oidc usage |
+| consumer-secret | secret for oauth2/oidc usage |
 

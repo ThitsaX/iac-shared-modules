@@ -2,7 +2,7 @@
    <soap:Header/>
    <soap:Body>
       <xsd:getOAuthApplicationDataByAppName>
-         <xsd:appName>MCM_portal</xsd:appName>
+         <xsd:appName>BOF_portal</xsd:appName>
       </xsd:getOAuthApplicationDataByAppName>
    </soap:Body>
 </soap:Envelope>

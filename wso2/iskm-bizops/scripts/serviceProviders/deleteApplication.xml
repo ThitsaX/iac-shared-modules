@@ -3,7 +3,7 @@
    <soap:Body>
       <xsd:deleteApplication>
          <!--Optional:-->
-         <xsd:applicationName>MCM_portal</xsd:applicationName>
+         <xsd:applicationName>BOF_portal</xsd:applicationName>
       </xsd:deleteApplication>
    </soap:Body>
 </soap:Envelope>

@@ -25,11 +25,11 @@ fi
 auth=$(printf '%s' $username:$password | base64)
 
 ###################################################################################################
-######     MCM_portal application                                                             #####
+######     BOF_portal application                                                             #####
 ###################################################################################################
 
 # echo ""
-# echo "Creating application: MCM_portal"
+# echo "Creating application: BOF_portal"
 
 soapResponse=$(curl -s -X POST -k \
     -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:registerOAuthApplicationData\"" \
@@ -53,16 +53,16 @@ oauthConsumerSecret=$(echo $soapResponse | grep -oPm1 "(?<=oauthConsumerSecret>)
 
 
 ###################################################################################################
-######     MCM_portal service provider                                                        #####
+######     BOF_portal service provider                                                        #####
 ###################################################################################################
 
 # echo ""
-# echo "Creating service provider: MCM_portal"
+# echo "Creating service provider: BOF_portal"
 
 soapResponse=$(curl -s -X POST -k \
     -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:createApplication\"" \
     -H "Authorization: Basic $auth" \
-    --data @serviceProviders/MCM_portal.xml \
+    --data @serviceProviders/BOF_portal.xml \
     https://$host:$port/services/IdentityApplicationManagementService.IdentityApplicationManagementServiceHttpsSoap12Endpoint/ \
     --insecure)
 # echo $soapResponse >> output/createClaim.txt
@@ -70,7 +70,7 @@ soapResponse=$(curl -s -X POST -k \
 cp serviceProviders/getApplication.xml serviceProviders/getApplicationTemp.xml
 # echo " - updating template"
 
-sed -i 's/@appname@/MCM_portal/g' serviceProviders/getApplicationTemp.xml
+sed -i 's/@appname@/BOF_portal/g' serviceProviders/getApplicationTemp.xml
 
 soapResponse=$(curl -s -X POST -k \
     -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:getApplication\"" \
@@ -86,7 +86,7 @@ rm serviceProviders/getApplicationTemp.xml
 
 cp serviceProviders/updateApplication.xml serviceProviders/updateApplicationTemp.xml
 sed -i "s/@appid@/$appId/g" serviceProviders/updateApplicationTemp.xml
-sed -i "s/@appname@/MCM_portal/g" serviceProviders/updateApplicationTemp.xml
+sed -i "s/@appname@/BOF_portal/g" serviceProviders/updateApplicationTemp.xml
 sed -i "s/@authkey@/$consumerKey/g" serviceProviders/updateApplicationTemp.xml
 sed -i "s/@secret@/$oauthConsumerSecret/g" serviceProviders/updateApplicationTemp.xml
 

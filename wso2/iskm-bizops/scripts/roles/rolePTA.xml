@@ -1,8 +1,0 @@
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.ws.um.carbon.wso2.org" xmlns:xsd="http://dao.service.ws.um.carbon.wso2.org/xsd">
-   <soap:Header/>
-   <soap:Body>
-      <ser:addRole>
-         <ser:roleName>Application/PTA</ser:roleName>
-      </ser:addRole>
-   </soap:Body>
-</soap:Envelope>

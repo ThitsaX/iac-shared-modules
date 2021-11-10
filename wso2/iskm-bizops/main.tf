@@ -1,5 +1,5 @@
 data "external" "get_secret_and_key" {
-  program = ["bash", "generateMCMConfigKeySecret.sh"]
+  program = ["bash", "generateBizopsKeySecret.sh"]
   query = {
     # arbitrary map from strings to strings, passed
     # to the external program as the data query.

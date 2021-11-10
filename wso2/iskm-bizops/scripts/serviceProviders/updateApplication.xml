@@ -51,7 +51,7 @@
             <xsd1:inboundAuthenticationConfig>
                <xsd1:inboundAuthenticationRequestConfigs>
                   <xsd1:friendlyName/>
-                  <xsd1:inboundAuthKey>MCM_portal</xsd1:inboundAuthKey>
+                  <xsd1:inboundAuthKey>BOF_portal</xsd1:inboundAuthKey>
                   <xsd1:inboundAuthType>passivests</xsd1:inboundAuthType>
                   <xsd1:inboundConfigType>standardAPP</xsd1:inboundConfigType>
                   <xsd1:inboundConfiguration/>
@@ -77,7 +77,7 @@
                </xsd1:inboundAuthenticationRequestConfigs>
                <xsd1:inboundAuthenticationRequestConfigs>
                   <xsd1:friendlyName/>
-                  <xsd1:inboundAuthKey>MCM_portal</xsd1:inboundAuthKey>
+                  <xsd1:inboundAuthKey>BOF_portal</xsd1:inboundAuthKey>
                   <xsd1:inboundAuthType>openid</xsd1:inboundAuthType>
                   <xsd1:inboundConfigType>standardAPP</xsd1:inboundConfigType>
                   <xsd1:inboundConfiguration/>

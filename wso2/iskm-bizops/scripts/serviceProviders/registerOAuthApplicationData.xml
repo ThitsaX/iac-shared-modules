@@ -4,7 +4,7 @@
       <xsd:registerOAuthApplicationData>
          <xsd:application>
             <xsd1:OAuthVersion>OAuth-2.0</xsd1:OAuthVersion>
-            <xsd1:applicationName>MCM_portal</xsd1:applicationName>
+            <xsd1:applicationName>BOF_portal</xsd1:applicationName>
             <xsd1:grantTypes>password</xsd1:grantTypes>
             <xsd1:tokenType>JWT</xsd1:tokenType>
          </xsd:application>
