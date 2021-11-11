@@ -1,4 +1,4 @@
-output "customer_gateway_id" {
+/* output "customer_gateway_id" {
   description = "ID of the Customer Gateway"
   value       = element(concat(aws_customer_gateway.this.*.id, list("")), 0)
 }
@@ -17,4 +17,4 @@ output "vpn_connection" {
     tunnel2_vgw_inside_address    = element(concat(aws_vpn_connection.this.*.tunnel2_vgw_inside_address, list("")), 0)
     tunnel2_psk                   = element(concat(aws_vpn_connection.this.*.tunnel2_preshared_key, list("")), 0)
   }
-}
+} */
