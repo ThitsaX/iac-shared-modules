@@ -12,14 +12,14 @@ variable "destination_cidr_block" {
 
 data "aws_route_tables" "this" {
     filter {
-        name = "tag-value"
+        name = "tag:Name"
         values = ["${var.route_table_name}*"]
         }
     
-    filter {
+/*     filter {
         name = "tag-key"
         values = ["Name"]
-   }
+   } */
 
 }
 
@@ -32,5 +32,5 @@ resource "aws_route" "this" {
   depends_on = [
     data.aws_route_tables.this
   ]
-  
+
   }
