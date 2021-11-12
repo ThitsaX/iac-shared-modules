@@ -28,4 +28,9 @@ resource "aws_route" "this" {
   route_table_id            = tolist(data.aws_route_tables.this.ids)[count.index]
   destination_cidr_block    = var.destination_cidr_block
   transit_gateway_id = var.transit_gateway_id
-}
+
+  depends_on = [
+    data.aws_route_tables.this
+  ]
+  
+  }
