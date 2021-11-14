@@ -6,7 +6,7 @@ variable "p2p_tran_gw_name" {
 
 variable "tags" {
   description = "Map of custom tags for the provisioned resources"
-  type        = map
+  type        = map(any)
   default     = {}
 }
 
@@ -39,7 +39,7 @@ variable "pm4ml_routes_table_names" {
 
 variable "static_routes_destinations" {
   description = "List of CIDRs to be routed into the VPN tunnel."
-  type        = list
+  type        = list(any)
   default     = []
 }
 
