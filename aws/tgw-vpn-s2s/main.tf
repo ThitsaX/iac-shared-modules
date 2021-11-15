@@ -82,7 +82,7 @@ module "pm4ml-routes-side-a" {
   depends_on = [aws_ec2_transit_gateway.this]
   source     = "./pm4ml-routes-side"
   /*   count                  = length(var.pm4ml_routes_table_names) */
-  route_table_ids        = data.aws_route_tables.a
+  route_table_ids        = data.aws_route_tables.a.ids
   transit_gateway_id     = aws_ec2_transit_gateway.this.id
   destination_cidr_block = var.vpn_cidr_block
 
@@ -92,7 +92,7 @@ module "pm4ml-routes-side-b" {
   depends_on = [aws_ec2_transit_gateway.this]
   source     = "./pm4ml-routes-side"
   /*   count                  = length(var.pm4ml_routes_table_names) */
-  route_table_ids        = data.aws_route_tables.b
+  route_table_ids        = data.aws_route_tables.b.ids
   transit_gateway_id     = aws_ec2_transit_gateway.this.id
   destination_cidr_block = var.vpn_cidr_block
 
