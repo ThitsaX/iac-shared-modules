@@ -78,16 +78,25 @@ module "tgw-attachments" {
   transit_gateway_default_route_table_propagation = var.transit_gateway_default_route_table_propagation
 }
 
-module "pm4ml-routes-side" {
+module "pm4ml-routes-side-a" {
   depends_on = [aws_ec2_transit_gateway.this]
   source     = "./pm4ml-routes-side"
   /*   count                  = length(var.pm4ml_routes_table_names) */
-  route_table_ids        = data.aws_route_tables.all
+  route_table_ids        = data.aws_route_tables.a
   transit_gateway_id     = aws_ec2_transit_gateway.this.id
   destination_cidr_block = var.vpn_cidr_block
 
 }
 
+module "pm4ml-routes-side-b" {
+  depends_on = [aws_ec2_transit_gateway.this]
+  source     = "./pm4ml-routes-side"
+  /*   count                  = length(var.pm4ml_routes_table_names) */
+  route_table_ids        = data.aws_route_tables.b
+  transit_gateway_id     = aws_ec2_transit_gateway.this.id
+  destination_cidr_block = var.vpn_cidr_block
+
+}
 
 
 /* resource "aws_ec2_transit_gateway_route" "this" {
