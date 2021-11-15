@@ -1,17 +1,17 @@
 data "aws_route_tables" "a" {
-  for_each = toset(element(var.pm4ml_routes_table_names),0)
+
   filter {
     name   = "tag:Name"
-    values = [each.value]
+    values = [element(var.pm4ml_routes_table_names,0)]
   }
 
 }
 
 data "aws_route_tables" "b" {
-  for_each = toset(element(var.pm4ml_routes_table_names),1)
+
   filter {
     name   = "tag:Name"
-    values = [each.value]
+    values = [element(var.pm4ml_routes_table_names,1)]
   }
 
 }
