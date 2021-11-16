@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mgt="http://mgt.idp.carbon.wso2.org" xmlns:xsd="http://model.common.application.identity.carbon.wso2.org/xsd"><soapenv:Header/>
+<soapenv:Body>
+    <mgt:updateResidentIdP>
+        <mgt:identityProvider>
+            <xsd:homeRealmId>@realmid@</xsd:homeRealmId>
+            <xsd:identityProviderName>LOCAL</xsd:identityProviderName>
+            <xsd:federatedAuthenticatorConfigs >
+                <xsd:name>samlsso</xsd:name>
+                <xsd:properties >
+                    <xsd:name>IdPEntityId</xsd:name>
+                    <xsd:value>@entityid@</xsd:value>
+                </xsd:properties>
+            </xsd:federatedAuthenticatorConfigs>
+        </mgt:identityProvider>
+    </mgt:updateResidentIdP>
+</soapenv:Body></soapenv:Envelope>
