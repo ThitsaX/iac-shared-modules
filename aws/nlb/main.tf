@@ -29,7 +29,7 @@ resource "aws_lb_listener" "nlb" {
   }
 
   load_balancer_arn = aws_lb.nlb.arn
-  port              = each.value.target_port
+  port              = each.value.listen_port != "" ? each.value.listen_port : each.value.target_port
   protocol          = "TCP"
 
   default_action {
