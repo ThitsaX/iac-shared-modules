@@ -10,6 +10,7 @@ resource "aws_eip" "nlb" {
 resource "aws_lb" "nlb" {
   name               = "nlb-${var.prefix}"
   load_balancer_type = "network"
+  internal           = var.internal_lb
   subnet_mapping {
     subnet_id     = var.subnet_id
     allocation_id = aws_eip.nlb.id

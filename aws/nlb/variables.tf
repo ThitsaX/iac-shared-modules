@@ -23,3 +23,8 @@ variable "nlb_listeners" {
   description = "List of listeners to attach to target groups"
 }
 
+variable "internal_lb" {
+  description = "should lb be internal (true) or external (false)"
+  type = bool
+  default = false
+}
