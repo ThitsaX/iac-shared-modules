@@ -1,4 +1,5 @@
 resource "aws_eip" "nlb" {
+  count = var.internal_lb ? 0 : 1
   tags = merge(
     var.tags,
     {
@@ -13,7 +14,7 @@ resource "aws_lb" "nlb" {
   internal           = var.internal_lb
   subnet_mapping {
     subnet_id     = var.subnet_id
-    allocation_id = aws_eip.nlb.id
+    allocation_id = var.internal_lb ? null : aws_eip.nlb[0].id
   }
 
   tags = merge(
