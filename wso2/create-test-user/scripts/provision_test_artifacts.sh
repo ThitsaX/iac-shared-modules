@@ -3,14 +3,14 @@
 debug="false" 
 trace="false"
 
-eval "$(jq -r '@sh "hostname=\(.host) adminport=\(.admin_port) serviceport=\(.service_port) adminuser=\(.admin_user) adminpassword=\(.admin_pass) gatewayuser=\(.account_name) gatewaypassword=\(.account_pass) subscribetoapis=\(.api_list)"')"
+eval "$(jq -r '@sh "tokenhostname=\(.token_host) hostname=\(.host) adminport=\(.admin_port) serviceport=\(.service_port) adminuser=\(.admin_user) adminpassword=\(.admin_pass) gatewayuser=\(.account_name) gatewaypassword=\(.account_pass) subscribetoapis=\(.api_list)"')"
 
 
-if [ -z $hostname ] || [ -z $adminport ] || [ -z $serviceport ] || [ -z $adminuser ] || [ -z $adminpassword ] || [ -z $gatewayuser ] || [ -z $gatewaypassword ] || [ -z $subscribetoapis ]
+if [ -z $tokenhostname ] [ -z $hostname ] || [ -z $adminport ] || [ -z $serviceport ] || [ -z $adminuser ] || [ -z $adminpassword ] || [ -z $gatewayuser ] || [ -z $gatewaypassword ] || [ -z $subscribetoapis ]
 then
     echo " "
     echo "Missing arguments"
-    echo "usage: ./provision_user.sh -d <debug> -t <trace> -h hostname -a adminport -s serviceport -u adminuser -p adminpassword -g gatewayuser -w gatewaypassword -b subscribetoapis_csv"
+    echo "usage: ./provision_user.sh -d <debug> -t <trace> -t tokenhostname -h hostname -a adminport -s serviceport -u adminuser -p adminpassword -g gatewayuser -w gatewaypassword -b subscribetoapis_csv"
     echo " "
     exit 100
 fi
@@ -44,9 +44,9 @@ fi
 
 if [ $debug = "true" ]
 then
-    echo "Testing connectivity to API gateway port - https://$hostname:$serviceport"
+    echo "Testing connectivity to API gateway port - https://$tokenhostname:$serviceport"
 fi
-_connectivity_response=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -k https://$hostname:$serviceport/token --insecure)
+_connectivity_response=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -k https://$tokenhostname:$serviceport/token --insecure)
 _connectivity_statuscode=$(echo $_connectivity_response | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
 if [ $_connectivity_statuscode = "200" ] || [ $_connectivity_statuscode = "405" ]
 then
@@ -55,7 +55,7 @@ then
         echo "- connectivity to admin port established: $_connectivity_statuscode"
     fi
 else
-    echo "{ \"errorcode\" : \"003\", \"error\" : \"Cannot reach service on service endpoint https://$hostname:$serviceport/token. (HTTP: $_connectivity_statuscode)\" }" | jq '.'
+    echo "{ \"errorcode\" : \"003\", \"error\" : \"Cannot reach service on service endpoint https://$tokenhostname:$serviceport/token. (HTTP: $_connectivity_statuscode)\" }" | jq '.'
     exit 3
 fi
 
@@ -121,7 +121,7 @@ then
 fi
 
 _admin_auth_header=$(printf '%s' $_client_id:$_client_secret | base64)
-_token_response=$(curl -s -k -d "grant_type=password&username=$adminuser&password=$adminpassword&scope=apim:subscribe" -H "Authorization: Basic $_admin_auth_header" https://$hostname:$serviceport/token )
+_token_response=$(curl -s -k -d "grant_type=password&username=$adminuser&password=$adminpassword&scope=apim:subscribe" -H "Authorization: Basic $_admin_auth_header" https://$tokenhostname:$serviceport/token )
 _admin_token=$(echo $_token_response | grep -oP '(?<="access_token":")[^"]*')
 if [[ $debug = "true" ]]
 then
@@ -244,7 +244,7 @@ then
 fi
 
 _gateway_auth_header=$(printf '%s' $_gateway_client_id:$_gateway_client_secret | base64)
-_gateway_token_response=$(curl -s -k -d "grant_type=password&username=$gatewayuser&password=$gatewaypassword&scope=apim:subscribe" -H "Authorization: Basic $_gateway_auth_header" https://$hostname:$serviceport/token )
+_gateway_token_response=$(curl -s -k -d "grant_type=password&username=$gatewayuser&password=$gatewaypassword&scope=apim:subscribe" -H "Authorization: Basic $_gateway_auth_header" https://$tokenhostname:$serviceport/token )
 _gateway_token=$(echo $_gateway_token_response | grep -oP '(?<="access_token":")[^"]*')
 if [[ $debug = "true" ]]
 then

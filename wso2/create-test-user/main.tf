@@ -10,7 +10,7 @@ resource "null_resource" "create_artifacts_return_credentials" {
 
   provisioner "local-exec" {
     command = <<EOT
-echo '{"host":"${var.extgw_fqdn}","admin_port":"${var.extgw_admin_port}","service_port":"${var.extgw_token_service_port}","admin_user":"${var.admin_user}","admin_pass":"${var.admin_password}","account_name":"${each.value.sim_name}","account_pass":"${each.value.sim_password}","api_list":"${each.value.subscribe_to_api_list}"}' | ${path.module}/scripts/provision_test_artifacts.sh
+echo '{"token_host":"${var.token_extgw_fqdn}", "host":"${var.extgw_fqdn}","admin_port":"${var.extgw_admin_port}","service_port":"${var.extgw_token_service_port}","admin_user":"${var.admin_user}","admin_pass":"${var.admin_password}","account_name":"${each.value.sim_name}","account_pass":"${each.value.sim_password}","api_list":"${each.value.subscribe_to_api_list}"}' | ${path.module}/scripts/provision_test_artifacts.sh
 EOT
   }
 
