@@ -299,7 +299,7 @@ client_id=$(echo $dcr_response | awk -F'"clientId":' '{print $2}' | cut -d',' -f
 client_secret=$(echo $dcr_response | awk -F'"clientSecret":' '{print $2}' | cut -d',' -f 1 | tr -d '[:space:]' | awk -F'"' '{print $2}')
 
 #invoking the token endpoint
-token_endpoint="https://"$internal_gateway_hostname":"$api_gateway_token_endpoint_port$token_api_context
+token_endpoint="https://"$int_token_gateway_hostname":"$api_gateway_token_endpoint_port$token_api_context
 token_request_authorization_header=$(echo -n "$client_id":"$client_secret" | base64)
 
 api_view_token_response=$(curl -s -k -d "grant_type=password&username=$username&password=$password&scope=apim:api_view" -H "Authorization: Basic $token_request_authorization_header" $token_endpoint)

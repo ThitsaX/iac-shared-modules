@@ -3,6 +3,11 @@ variable "intgw_fqdn" {
   type        = string
 }
 
+variable "intgw_token_fqdn" {
+  description = "FQDN of Internal GW service"
+  type        = string
+}
+
 variable "intgw_rest_port" {
   description = "Port number for Interal GW ReST service"
   type        = number
