@@ -28,3 +28,9 @@ variable "internal_lb" {
   type = bool
   default = false
 }
+
+variable "preserve_client_ip" {
+  description = "should client ip be preserved, disable for internal lb"
+  type = bool
+  default = true
+}
