@@ -12,7 +12,6 @@ resource "aws_lb" "nlb" {
   name               = "nlb-${var.prefix}"
   load_balancer_type = "network"
   internal           = var.internal_lb
-  preserve_client_ip = var.preserve_client_ip
   subnet_mapping {
     subnet_id     = var.subnet_id
     allocation_id = var.internal_lb ? null : aws_eip.nlb[0].id
@@ -52,6 +51,7 @@ resource "aws_lb_target_group" "nlb" {
   vpc_id               = var.vpc_id
   target_type          = "instance"
   deregistration_delay = each.value.deregistration_delay
+  preserve_client_ip = var.preserve_client_ip
 
   health_check {
     interval            = each.value.interval
