@@ -52,6 +52,7 @@ resource "aws_lb_target_group" "nlb" {
   target_type          = "instance"
   deregistration_delay = each.value.deregistration_delay
   preserve_client_ip = var.preserve_client_ip
+  proxy_protocol_v2 = var.proxy_protocol
 
   health_check {
     interval            = each.value.interval

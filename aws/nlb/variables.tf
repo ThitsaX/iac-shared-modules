@@ -34,3 +34,9 @@ variable "preserve_client_ip" {
   type = bool
   default = true
 }
+
+variable "proxy_protocol" {
+  description = "should proxy protocol be enabled, disable for internal lb"
+  type = bool
+  default = false
+}
