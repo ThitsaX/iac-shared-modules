@@ -37,3 +37,7 @@ variable "extgw_state" {
   type        = string
   default     = "notused"
 }
+variable "token_extgw_fqdn" {
+  description = "FQDN of Internal GW token service"
+  type        = string
+}

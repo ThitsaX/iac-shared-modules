@@ -1,6 +1,7 @@
 locals {
   callback_env = {
     internal_gateway_hostname            = var.intgw_fqdn
+    int_token_gateway_hostname           = var.intgw_token_fqdn
     api_gateway_rest_endpoint_port       = var.intgw_rest_port
     api_gateway_token_endpoint_port      = var.intgw_token_port
     base_api_context                     = "/api/am/publisher/v0.14/apis"
