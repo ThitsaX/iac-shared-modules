@@ -1,4 +1,5 @@
 resource "aws_eip" "nlb" {
+  count = var.internal_lb ? 0 : 1
   tags = merge(
     var.tags,
     {
@@ -10,9 +11,10 @@ resource "aws_eip" "nlb" {
 resource "aws_lb" "nlb" {
   name               = "nlb-${var.prefix}"
   load_balancer_type = "network"
+  internal           = var.internal_lb
   subnet_mapping {
     subnet_id     = var.subnet_id
-    allocation_id = aws_eip.nlb.id
+    allocation_id = var.internal_lb ? null : aws_eip.nlb[0].id
   }
 
   tags = merge(
@@ -29,7 +31,7 @@ resource "aws_lb_listener" "nlb" {
   }
 
   load_balancer_arn = aws_lb.nlb.arn
-  port              = each.value.target_port
+  port              = each.value.listen_port != "" ? each.value.listen_port : each.value.target_port
   protocol          = "TCP"
 
   default_action {
@@ -49,6 +51,8 @@ resource "aws_lb_target_group" "nlb" {
   vpc_id               = var.vpc_id
   target_type          = "instance"
   deregistration_delay = each.value.deregistration_delay
+  preserve_client_ip = var.preserve_client_ip
+  proxy_protocol_v2 = var.proxy_protocol
 
   health_check {
     interval            = each.value.interval

@@ -23,3 +23,20 @@ variable "nlb_listeners" {
   description = "List of listeners to attach to target groups"
 }
 
+variable "internal_lb" {
+  description = "should lb be internal (true) or external (false)"
+  type = bool
+  default = false
+}
+
+variable "preserve_client_ip" {
+  description = "should client ip be preserved, disable for internal lb"
+  type = bool
+  default = true
+}
+
+variable "proxy_protocol" {
+  description = "should proxy protocol be enabled, disable for internal lb"
+  type = bool
+  default = false
+}
