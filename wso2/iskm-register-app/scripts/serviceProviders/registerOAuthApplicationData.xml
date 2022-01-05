@@ -1,0 +1,14 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsd="http://org.apache.axis2/xsd" xmlns:xsd1="http://dto.oauth.identity.carbon.wso2.org/xsd">
+   <soap:Header/>
+   <soap:Body>
+      <xsd:registerOAuthApplicationData>
+         <xsd:application>
+            <xsd1:OAuthVersion>OAuth-2.0</xsd1:OAuthVersion>
+            <xsd1:applicationName>@appname@</xsd1:applicationName>
+            <xsd1:grantTypes>refresh_token implicit password client_credentials authorization_code</xsd1:grantTypes>
+            <xsd1:tokenType>JWT</xsd1:tokenType>
+            <xsd1:callbackUrl>@callbackurl@</xsd1:callbackUrl>
+         </xsd:application>
+      </xsd:registerOAuthApplicationData>
+   </soap:Body>
+</soap:Envelope>
