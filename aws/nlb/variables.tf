@@ -29,6 +29,12 @@ variable "internal_lb" {
   default = false
 }
 
+variable "enable_cross_zone_load_balancing" {
+  description = "should cross zone lb be enabled"
+  type = bool
+  default = false
+}
+
 variable "preserve_client_ip" {
   description = "should client ip be preserved, disable for internal lb"
   type = bool
