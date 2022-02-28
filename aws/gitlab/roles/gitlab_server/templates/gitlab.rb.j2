@@ -351,9 +351,8 @@ gitlab_rails['omniauth_sync_profile_from_provider'] = ['github']
 gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
 gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'github'
 gitlab_rails['omniauth_block_auto_created_users'] = false
-gitlab_rails['omniauth_auto_link_ldap_user'] = false
-gitlab_rails['omniauth_auto_link_saml_user'] = false
-gitlab_rails['omniauth_external_providers'] = ['github']
+gitlab_rails['omniauth_auto_link_user'] = ['github']
+gitlab_rails['omniauth_auto_link_saml_user'] = true
 gitlab_rails['omniauth_providers'] = [
   {
     "name" => "github",
