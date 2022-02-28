@@ -342,25 +342,27 @@ gitlab_rails['gitlab_email_display_name'] = '{{ email_display_name }}'
 
 ### OmniAuth Settings
 ###! Docs: https://docs.gitlab.com/ce/integration/omniauth.html
-# gitlab_rails['omniauth_enabled'] = nil
-# gitlab_rails['omniauth_allow_single_sign_on'] = ['saml']
-# gitlab_rails['omniauth_sync_email_from_provider'] = 'saml'
-# gitlab_rails['omniauth_sync_profile_from_provider'] = ['saml']
-# gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
-# gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'saml'
-# gitlab_rails['omniauth_block_auto_created_users'] = true
-# gitlab_rails['omniauth_auto_link_ldap_user'] = false
-# gitlab_rails['omniauth_auto_link_saml_user'] = false
-# gitlab_rails['omniauth_external_providers'] = ['twitter', 'google_oauth2']
-# gitlab_rails['omniauth_allow_bypass_two_factor'] = ['google_oauth2']
-# gitlab_rails['omniauth_providers'] = [
-#   {
-#     "name" => "google_oauth2",
-#     "app_id" => "YOUR APP ID",
-#     "app_secret" => "YOUR APP SECRET",
-#     "args" => { "access_type" => "offline", "approval_prompt" => "" }
-#   }
-# ]
+
+gitlab_rails['omniauth_enabled'] = {{ enable_github_oauth | lower }}
+{% if enable_github_oauth %}
+gitlab_rails['omniauth_allow_single_sign_on'] = ['github']
+gitlab_rails['omniauth_sync_email_from_provider'] = 'github'
+gitlab_rails['omniauth_sync_profile_from_provider'] = ['github']
+gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
+gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'github'
+gitlab_rails['omniauth_block_auto_created_users'] = false
+gitlab_rails['omniauth_auto_link_ldap_user'] = false
+gitlab_rails['omniauth_auto_link_saml_user'] = false
+gitlab_rails['omniauth_external_providers'] = ['github']
+gitlab_rails['omniauth_providers'] = [
+  {
+    "name" => "github",
+    "app_id" => "{{ github_oauth_id }}",
+    "app_secret" => "{{ github_oauth_secret }}",
+    "args" => { scope: "user:email" }
+  }
+]
+{% endif %}
 
 ### Backup Settings
 ###! Docs: https://docs.gitlab.com/omnibus/settings/backups.html
