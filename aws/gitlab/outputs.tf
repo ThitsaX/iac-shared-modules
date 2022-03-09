@@ -57,3 +57,9 @@ output "gitlab_root_pw" {
   value       = random_password.gitlab_root_password.result
   sensitive   = true
 }
+
+output "gitlab_root_token" {
+  description = "root token for gitlab"
+  value       = random_password.gitlab_root_token.result
+  sensitive   = true
+}
