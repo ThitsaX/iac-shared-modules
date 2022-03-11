@@ -140,3 +140,40 @@ variable "github_oauth_secret" {
   default = ""
   sensitive = true
 }
+
+variable "smtp_server_enable" {
+  type = bool
+  description = "enable smtp"
+  default = false
+}
+
+variable "smtp_server_address" {
+  type        = string
+  description = "smtp_server_address"
+  default = ""
+}
+
+variable "smtp_server_port" {
+  type        = number
+  description = "smtp_server_port"
+  default = 587
+}
+
+variable "smtp_server_user" {
+  type        = string
+  description = "smtp_server_user"
+  default = ""
+}
+
+variable "smtp_server_pw" {
+  type        = string
+  description = "smtp_server_pw"
+  default = ""
+  sensitive = true
+}
+
+variable "smtp_server_mail_domain" {
+  type        = string
+  description = "smtp_server_mail_domain"
+  default = ""
+}
