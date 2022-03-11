@@ -208,9 +208,15 @@ resource "random_password" "gitlab_root_password" {
   override_special = "@#*"
 }
 
+resource "random_password" "gitlab_root_token" {
+  length = 20
+  special = true
+  override_special = "@#*"
+}
+
 resource "null_resource" "configure-gitlab" {
   provisioner "local-exec" {
-    command     = "ansible-playbook -i inventory gitlab.yaml --extra-vars 'letsencrypt_endpoint=${local.letsencrypt_endpoint} server_password=${random_password.gitlab_root_password.result} external_url=https://${module.dns.hostname}/ enable_pages=false server_hostname=${module.dns.hostname}'"
+    command     = "ansible-playbook -i inventory gitlab.yaml --extra-vars 'enable_github_oauth=${var.enable_github_oauth} github_oauth_id=${var.github_oauth_id} github_oauth_secret=${var.github_oauth_secret} letsencrypt_endpoint=${local.letsencrypt_endpoint} server_password=${random_password.gitlab_root_password.result} server_token=${random_password.gitlab_root_token.result} external_url=https://${module.dns.hostname}/ enable_pages=false server_hostname=${module.dns.hostname}'"
     working_dir = path.module
   }
   depends_on = [aws_instance.gitlab-server, aws_instance.gitlab-ci]

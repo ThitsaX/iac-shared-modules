@@ -1,7 +1,11 @@
 server_hostname: gitlab
 server_password: changeme
+server_token: changeme
 external_url: <changeme>
 email_display_name: GitLab
 enable_pages: true
 pages_subdomain: pages
 letsencrypt_endpoint: https://acme-v02.api.letsencrypt.org/directory
+enable_github_oauth: false
+github_oauth_id: null
+github_oauth_secret: null

@@ -121,3 +121,22 @@ variable "tenant" {
   type        = string
   description = "tenancy name"
 }
+
+variable "enable_github_oauth" {
+  type = bool
+  description = "enable auth from github oauth app"
+  default = false
+}
+
+variable "github_oauth_id" {
+  type        = string
+  description = "github oauth id"
+  default = ""
+}
+
+variable "github_oauth_secret" {
+  type        = string
+  description = "github oauth secret"
+  default = ""
+  sensitive = true
+}
