@@ -197,6 +197,21 @@ resource "local_file" "ansible-inventory" {
     ssh_key                = "./ssh_keys/${module.ssh_key_pair.key_name}"
     gitlab_server_hostname = aws_instance.gitlab-server.public_dns
     gitlab_ci_hostname     = aws_instance.gitlab-ci.public_dns
+    server_hostname        = module.dns.hostname
+    enable_github_oauth    = var.enable_github_oauth
+    github_oauth_id        = var.github_oauth_id
+    github_oauth_secret    = var.github_oauth_secret
+    letsencrypt_endpoint   = local.letsencrypt_endpoint
+    server_password        = random_password.gitlab_root_password.result
+    server_token           = random_password.gitlab_root_token.result
+    external_url           = "https://${module.dns.hostname}/"
+    enable_pages           = false
+    smtp_server_enable     = var.smtp_server_enable
+    smtp_server_address    = var.smtp_server_address
+    smtp_server_port       = var.smtp_server_port
+    smtp_server_user       = var.smtp_server_user
+    smtp_server_pw         = var.smtp_server_pw
+    smtp_server_mail_domain = var.smtp_server_mail_domain
   })
   filename        = "${path.module}/inventory"
   file_permission = "0644"
@@ -216,7 +231,7 @@ resource "random_password" "gitlab_root_token" {
 
 resource "null_resource" "configure-gitlab" {
   provisioner "local-exec" {
-    command     = "ansible-playbook -i inventory gitlab.yaml --extra-vars 'enable_github_oauth=${var.enable_github_oauth} github_oauth_id=${var.github_oauth_id} github_oauth_secret=${var.github_oauth_secret} letsencrypt_endpoint=${local.letsencrypt_endpoint} server_password=${random_password.gitlab_root_password.result} server_token=${random_password.gitlab_root_token.result} external_url=https://${module.dns.hostname}/ enable_pages=false server_hostname=${module.dns.hostname}'"
+    command     = "ansible-playbook -i inventory gitlab.yaml"
     working_dir = path.module
   }
   depends_on = [aws_instance.gitlab-server, aws_instance.gitlab-ci]
