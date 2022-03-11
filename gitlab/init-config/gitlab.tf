@@ -35,4 +35,5 @@ resource "gitlab_project" "envs" {
   name = each.value
   namespace_id = gitlab_group.iac.id
   initialize_with_readme = true
+  shared_runners_enabled = true
 }
