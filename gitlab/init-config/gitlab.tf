@@ -13,7 +13,7 @@ resource "gitlab_group" "iac" {
 }
 
 resource "gitlab_group_variable" "iam_user_key_id" {
-  group             = gitlab_group.iac
+  group             = gitlab_group.iac.id
   key               = "AWS_ACCESS_KEY_ID"
   value             = var.iac_user_key_id
   protected         = true
@@ -22,7 +22,7 @@ resource "gitlab_group_variable" "iam_user_key_id" {
 }
 
 resource "gitlab_group_variable" "iam_user_key_secret" {
-  group             = gitlab_group.iac
+  group             = gitlab_group.iac.id
   key               = "AWS_SECRET_ACCESS_KEY"
   value             = var.iac_user_key_secret
   protected         = true
