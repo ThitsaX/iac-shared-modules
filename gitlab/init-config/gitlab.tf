@@ -37,3 +37,10 @@ resource "gitlab_project" "envs" {
   initialize_with_readme = true
   shared_runners_enabled = true
 }
+
+resource "gitlab_project" "bootstrap" {
+  name = "bootstrap"
+  namespace_id = gitlab_group.iac.id
+  initialize_with_readme = true
+  shared_runners_enabled = false
+}
