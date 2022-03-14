@@ -29,7 +29,7 @@
 
 - name: Install GitLab Runner
   get_url:
-    url: "https://s3.amazonaws.com/gitlab-runner-downloads/{{ version }}/binaries/gitlab-runner-linux-amd64"
+    url: "https://s3.amazonaws.com/gitlab-runner-downloads/{{ gitlab_version }}/binaries/gitlab-runner-linux-amd64"
     dest: /usr/local/bin/gitlab-runner
     mode: a+x
 
