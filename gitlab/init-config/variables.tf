@@ -22,3 +22,8 @@ variable "root_token" {
 variable "gitlab_url" {
   description = "gitlab_url"
 }
+
+variable "two_factor_grace_period" {
+  description = "two_factor_grace_period in hours"
+  default = 0
+}
