@@ -10,6 +10,7 @@ resource "gitlab_group" "iac" {
   path        = "iac"
   description = "iac group"
   require_two_factor_authentication = true
+  two_factor_grace_period = var.two_factor_grace_period
 }
 
 resource "gitlab_group_variable" "iam_user_key_id" {
