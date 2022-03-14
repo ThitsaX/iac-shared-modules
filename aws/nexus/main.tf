@@ -20,6 +20,7 @@ module "label" {
 resource "random_password" "nexus_password" {
   length  = 16
   special = true
+  override_special = "@#*"
 }
 
 resource "aws_key_pair" "nexus_provisioner_key" {

@@ -9,3 +9,9 @@ letsencrypt_endpoint: https://acme-v02.api.letsencrypt.org/directory
 enable_github_oauth: false
 github_oauth_id: null
 github_oauth_secret: null
+smtp_server_enable: false
+smtp_server_address: null
+smtp_server_port: 587
+smtp_server_user: user
+smtp_server_pw: testpw
+smtp_server_mail_domain: domain

@@ -234,7 +234,7 @@ resource "null_resource" "configure-gitlab" {
     command     = "ansible-playbook -i inventory gitlab.yaml"
     working_dir = path.module
   }
-  depends_on = [aws_instance.gitlab-server, aws_instance.gitlab-ci]
+  depends_on = [aws_instance.gitlab-server, aws_instance.gitlab-ci, local_file.ansible-inventory]
 }
 
 
