@@ -21,3 +21,4 @@ server_token=${server_token}
 external_url='${external_url}'
 server_hostname=${server_hostname}
 enable_pages=${enable_pages}
+gitlab_version=${gitlab_version}

@@ -177,3 +177,9 @@ variable "smtp_server_mail_domain" {
   description = "smtp_server_mail_domain"
   default = ""
 }
+
+variable "gitlab_version" {
+  type        = string
+  description = "gitlab_version"
+  default = "14.8.1-ee.0"
+}
