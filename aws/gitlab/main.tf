@@ -220,13 +220,13 @@ resource "local_file" "ansible-inventory" {
 resource "random_password" "gitlab_root_password" {
   length = 16
   special = true
-  override_special = "@#*"
+  override_special = "_"
 }
 
 resource "random_password" "gitlab_root_token" {
   length = 20
   special = true
-  override_special = "@#*"
+  override_special = "_"
 }
 
 resource "null_resource" "configure-gitlab" {
