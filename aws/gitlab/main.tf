@@ -212,6 +212,7 @@ resource "local_file" "ansible-inventory" {
     smtp_server_user       = var.smtp_server_user
     smtp_server_pw         = var.smtp_server_pw
     smtp_server_mail_domain = var.smtp_server_mail_domain
+    gitlab_version         = var.gitlab_version
   })
   filename        = "${path.module}/inventory"
   file_permission = "0644"
