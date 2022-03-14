@@ -31,7 +31,7 @@
 
 - name: Install GitLab EE
   package:
-    name: gitlab-ee
-    state: "{{ gitlab_version }}"
+    name: gitlab-ee="{{ gitlab_version }}"
+    state: present
     update_cache: yes
     autoremove: yes
