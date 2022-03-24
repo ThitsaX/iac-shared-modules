@@ -75,6 +75,7 @@ fi
 # step 2:   create user -or- reset password if user exists
 
 user_created=false 
+user_modified=false
 
 if [[ $_user_exists = "true" ]]
 then
@@ -104,33 +105,35 @@ then
 
     # resetting user email to provided value
 
-    if [ -z $account_email ]
+    # if [ -z $account_email ]
+    # then
+    if [[ $debug = "true" ]]
     then
-        if [[ $debug = "true" ]]
-        then
-            echo "      user [$account_username] exists"
-            echo ""
-            echo "8.    going to update the user email"
-        fi
-
-        _resetemail_payload="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.ws.um.carbon.wso2.org\"><soapenv:Header/><soapenv:Body><ser:setUserClaimValues><ser:userName>$account_username</ser:userName><ser:claims><ser:claimURI>http://wso2.org/claims/emailaddress</ser:claimURI><ser:value>$account_email</ser:value></ser:claims></ser:setUserClaimValues></soapenv:Body></soapenv:Envelope>"
-        _resetemail_response=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X POST -H "Content-Type: text/xml;charset=UTF-8" -H "SOAPAction: urn:setUserClaimValues" -H "Authorization: Basic $_admin_basic_header" --data "$_resetemail_payload" https://$hostname:$adminport/services/RemoteUserStoreManagerService --insecure)
-        _resetemail_statuscode=$(echo $_resetemail_response | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
-
-        if [[ $debug = "true" ]]
-        then
-            echo "_resetemail_payload:"
-            echo $_resetemail_payload
-            echo "_resetemail_statuscode:"
-            echo $_resetemail_statuscode
-        fi
-
-        if [ $_resetemail_statuscode != "202" ]
-        then
-            echo "{ \"errorcode\" : \"008\", \"error\" : \"The gateway user's email could not be reset\" }" | jq '.'
-            exit 8
-        fi
+        echo "      user [$account_username] exists"
+        echo ""
+        echo "8.    going to update the user email"
     fi
+
+    _resetemail_payload="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.ws.um.carbon.wso2.org\"><soapenv:Header/><soapenv:Body><ser:setUserClaimValues><ser:userName>$account_username</ser:userName><ser:claims><ser:claimURI>http://wso2.org/claims/emailaddress</ser:claimURI><ser:value>$account_email</ser:value></ser:claims></ser:setUserClaimValues></soapenv:Body></soapenv:Envelope>"
+    _resetemail_response=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X POST -H "Content-Type: text/xml;charset=UTF-8" -H "SOAPAction: urn:setUserClaimValues" -H "Authorization: Basic $_admin_basic_header" --data "$_resetemail_payload" https://$hostname:$adminport/services/RemoteUserStoreManagerService --insecure)
+    _resetemail_statuscode=$(echo $_resetemail_response | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
+
+    if [[ $debug = "true" ]]
+    then
+        echo "_resetemail_payload:"
+        echo $_resetemail_payload
+        echo "_resetemail_statuscode:"
+        echo $_resetemail_statuscode
+    fi
+
+    if [ $_resetemail_statuscode != "202" ]
+    then
+        echo "{ \"errorcode\" : \"008\", \"error\" : \"The gateway user's email could not be reset\" }" | jq '.'
+        exit 8
+    else
+        user_modified=true
+    fi
+    # fi
 
 else
     if [[ $debug = "true" ]]
@@ -192,4 +195,4 @@ then
     echo "      UserID for the user [$account_userid]"
 fi
 
-jq -n --arg account_userid $account_userid --arg user_created $user_created '{"account_userid":$account_userid,"user_created":$user_created}'
+jq -n --arg account_userid $account_userid --arg user_created $user_created --arg user_modified $user_modified '{"account_userid":$account_userid,"user_created":$user_created,"user_modified":$user_modified}'
