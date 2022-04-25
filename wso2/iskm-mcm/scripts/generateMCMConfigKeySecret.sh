@@ -53,6 +53,36 @@ fi
 
 auth=$(printf '%s' $username:$password | base64)
 
+#set admin mta/pta roles for admin user if not already set since service provider is owned by the admin user
+_addmtarole_payload="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.ws.um.carbon.wso2.org\" xmlns:xsd=\"http://common.mgt.user.carbon.wso2.org/xsd\"><soapenv:Header/><soapenv:Body><ser:updateRoleListOfUser><ser:userName>admin</ser:userName><ser:newRoles>Application/MTA</ser:newRoles></ser:updateRoleListOfUser></soapenv:Body></soapenv:Envelope>"
+_addptarole_payload="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.ws.um.carbon.wso2.org\" xmlns:xsd=\"http://common.mgt.user.carbon.wso2.org/xsd\"><soapenv:Header/><soapenv:Body><ser:updateRoleListOfUser><ser:userName>admin</ser:userName><ser:newRoles>Application/PTA</ser:newRoles></ser:updateRoleListOfUser></soapenv:Body></soapenv:Envelope>"
+
+getRolesSoapResponse=$(curl -s -X POST -k \
+    -H "Content-Type: text/xml" \
+    -H "SOAPAction: urn:getRoleListOfUser" \
+    -H "Authorization: Basic $auth" \
+    --data "$_getrolelistofuser" \
+    https://$host:$port/services/RemoteUserStoreManagerService/ \
+    --insecure)
+    
+if echo "$getRolesSoapResponse" | grep -q "MTA"; then
+    updateMTARoleSoapResponse=$(curl -s -X POST -k \
+        -H "Content-Type: application/soap+xml;charset=UTF-8" \
+        -H "SOAPAction: urn:updateRoleListOfUser" \
+        -H "Authorization: Basic $auth" \
+        --data "$_addmtarole_payload" \
+        https://$host:$port/services/RemoteUserStoreManagerService/ \
+        --insecure)
+fi
+if echo "$getRolesSoapResponse" | grep -q "PTA"; then
+    updatePTARoleSoapResponse=$(curl -s -X POST -k \
+        -H "Content-Type: application/soap+xml;charset=UTF-8" \
+        -H "SOAPAction: urn:updateRoleListOfUser" \
+        -H "Authorization: Basic $auth" \
+        --data "$_addptarole_payload" \
+        https://$host:$port/services/RemoteUserStoreManagerService/ \
+        --insecure)
+fi
 soapResponse=$(curl -s -X POST -k \
     -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:getOAuthApplicationDataByAppName\"" \
     -H "Authorization: Basic $auth" \
