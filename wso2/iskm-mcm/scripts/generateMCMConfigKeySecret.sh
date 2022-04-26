@@ -64,8 +64,7 @@ getRolesSoapResponse=$(curl -s -X POST -k \
     --data "$_getrolelistofuser" \
     https://$host:$port/services/RemoteUserStoreManagerService/ \
     --insecure)
-    
-if [! echo "$getRolesSoapResponse" | grep -q "MTA"]; then
+if [[ ! $(echo "$getRolesSoapResponse" | grep -q "MTA") ]]; then
     updateMTARoleSoapResponse=$(curl -s -X POST -k \
         -H "Content-Type: application/soap+xml;charset=UTF-8" \
         -H "SOAPAction: urn:updateRoleListOfUser" \
@@ -74,7 +73,7 @@ if [! echo "$getRolesSoapResponse" | grep -q "MTA"]; then
         https://$host:$port/services/RemoteUserStoreManagerService/ \
         --insecure)
 fi
-if [! echo "$getRolesSoapResponse" | grep -q "PTA"]; then
+if [[ ! $(echo "$getRolesSoapResponse" | grep -q "PTA") ]]; then
     updatePTARoleSoapResponse=$(curl -s -X POST -k \
         -H "Content-Type: application/soap+xml;charset=UTF-8" \
         -H "SOAPAction: urn:updateRoleListOfUser" \
