@@ -56,6 +56,7 @@ auth=$(printf '%s' $username:$password | base64)
 #set admin mta/pta roles for admin user if not already set since service provider is owned by the admin user
 _addmtarole_payload="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.ws.um.carbon.wso2.org\" xmlns:xsd=\"http://common.mgt.user.carbon.wso2.org/xsd\"><soapenv:Header/><soapenv:Body><ser:updateRoleListOfUser><ser:userName>admin</ser:userName><ser:newRoles>Application/MTA</ser:newRoles></ser:updateRoleListOfUser></soapenv:Body></soapenv:Envelope>"
 _addptarole_payload="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.ws.um.carbon.wso2.org\" xmlns:xsd=\"http://common.mgt.user.carbon.wso2.org/xsd\"><soapenv:Header/><soapenv:Body><ser:updateRoleListOfUser><ser:userName>admin</ser:userName><ser:newRoles>Application/PTA</ser:newRoles></ser:updateRoleListOfUser></soapenv:Body></soapenv:Envelope>"
+_getrolelistofuser="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.ws.um.carbon.wso2.org\" xmlns:xsd=\"http://common.mgt.user.carbon.wso2.org/xsd\"><soapenv:Header/><soapenv:Body><ser:getRoleListOfUser><ser:userName>admin</ser:userName></ser:getRoleListOfUser></soapenv:Body></soapenv:Envelope>"
 
 getRolesSoapResponse=$(curl -s -X POST -k \
     -H "Content-Type: text/xml" \
