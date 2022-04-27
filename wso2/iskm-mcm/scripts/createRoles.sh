@@ -27,15 +27,22 @@ auth=$(printf '%s' $username:$password | base64)
 
 # echo ""
 # echo "Creating role: MTA"
-
-soapResponse=$(curl -s -X POST -k \
-    -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:addRole\"" \
-    -H "SOAPAction: urn:addRole" \
+getRolesSoapResponse=$(curl -s -X POST -k \
+    -H "Content-Type: text/xml" \
+    -H "SOAPAction: urn:getRoleNames" \
     -H "Authorization: Basic $auth" \
-    --data @roles/roleMTA.xml \
+    --data @roles/getAllRoles.xml \
     https://$host:$port/services/RemoteUserStoreManagerService.RemoteUserStoreManagerServiceHttpsSoap12Endpoint/ \
     --insecure)
-
+if [[ ! $(echo $getRolesSoapResponse | grep -q "MTA") ]]; then
+    soapResponse=$(curl -s -X POST -k \
+        -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:addRole\"" \
+        -H "SOAPAction: urn:addRole" \
+        -H "Authorization: Basic $auth" \
+        --data @roles/roleMTA.xml \
+        https://$host:$port/services/RemoteUserStoreManagerService.RemoteUserStoreManagerServiceHttpsSoap12Endpoint/ \
+        --insecure)
+fi
 # echo "$soapResponse"
 
 ###################################################################################################
@@ -44,13 +51,13 @@ soapResponse=$(curl -s -X POST -k \
 
 # echo ""
 # echo "Creating role: PTA"
-
-soapResponse=$(curl -s -X POST -k \
-    -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:addRole\"" \
-    -H "SOAPAction: urn:addRole" \
-    -H "Authorization: Basic $auth" \
-    --data @roles/rolePTA.xml \
-    https://$host:$port/services/RemoteUserStoreManagerService.RemoteUserStoreManagerServiceHttpsSoap12Endpoint/ \
-    --insecure)
-
+if [[ ! $(echo $getRolesSoapResponse | grep -q "PTA") ]]; then
+    soapResponse=$(curl -s -X POST -k \
+        -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:addRole\"" \
+        -H "SOAPAction: urn:addRole" \
+        -H "Authorization: Basic $auth" \
+        --data @roles/rolePTA.xml \
+        https://$host:$port/services/RemoteUserStoreManagerService.RemoteUserStoreManagerServiceHttpsSoap12Endpoint/ \
+        --insecure)
+fi
 # echo "$soapResponse"

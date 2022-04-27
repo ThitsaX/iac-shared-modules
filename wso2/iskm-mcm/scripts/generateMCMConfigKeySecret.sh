@@ -65,20 +65,24 @@ getRolesSoapResponse=$(curl -s -X POST -k \
     --data "$_getrolelistofuser" \
     https://$host:$port/services/RemoteUserStoreManagerService/ \
     --insecure)
-updateMTARoleSoapResponse=$(curl -s -X POST -k \
-    -H "Content-Type: application/soap+xml;charset=UTF-8" \
-    -H "SOAPAction: urn:updateRoleListOfUser" \
-    -H "Authorization: Basic $auth" \
-    --data "$_addmtarole_payload" \
-    https://$host:$port/services/RemoteUserStoreManagerService/ \
-    --insecure)
-updatePTARoleSoapResponse=$(curl -s -X POST -k \
-    -H "Content-Type: application/soap+xml;charset=UTF-8" \
-    -H "SOAPAction: urn:updateRoleListOfUser" \
-    -H "Authorization: Basic $auth" \
-    --data "$_addptarole_payload" \
-    https://$host:$port/services/RemoteUserStoreManagerService/ \
-    --insecure)
+if [[ ! $(echo $getRolesSoapResponse | grep -q "MTA") ]]; then
+    updateMTARoleSoapResponse=$(curl -s -X POST -k \
+        -H "Content-Type: text/xml" \
+        -H "SOAPAction: urn:updateRoleListOfUser" \
+        -H "Authorization: Basic $auth" \
+        --data "$_addmtarole_payload" \
+        https://$host:$port/services/RemoteUserStoreManagerService/ \
+        --insecure)
+fi
+if [[ ! $(echo $getRolesSoapResponse | grep -q "PTA") ]]; then
+    updatePTARoleSoapResponse=$(curl -s -X POST -k \
+        -H "Content-Type: text/xml" \
+        -H "SOAPAction: urn:updateRoleListOfUser" \
+        -H "Authorization: Basic $auth" \
+        --data "$_addptarole_payload" \
+        https://$host:$port/services/RemoteUserStoreManagerService/ \
+        --insecure)
+fi
 soapResponse=$(curl -s -X POST -k \
     -H "Content-Type: application/soap+xml;charset=UTF-8;action=\"urn:getOAuthApplicationDataByAppName\"" \
     -H "Authorization: Basic $auth" \
