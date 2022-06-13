@@ -1,0 +1,4 @@
+base_domain: a.b.c
+root_dir: /root/compose
+server_public_ip: 127.0.0.1
+letsencrypt_email: admin@example.com
