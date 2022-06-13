@@ -1,0 +1,176 @@
+/**
+ * # netmaker Module
+ *
+ * Create netmaker server using EC2 instance.
+ *
+ * The module creates an EC2 instance. It configures netmaker using a docker instance.
+ *
+ * Configuration is done by Ansible using the roles included in this module.
+ *
+ */
+
+module "label" {
+  source     = "../null-label"
+  name       = var.name
+  delimiter  = var.delimiter
+  attributes = var.attributes
+  tags       = var.tags
+}
+
+resource "random_password" "netmaker_password" {
+  length  = 16
+  special = true
+  override_special = "@#*"
+}
+
+resource "aws_key_pair" "netmaker_provisioner_key" {
+  key_name   = "netmaker-${var.namespace}-${var.domain}-deployer-key"
+  public_key = tls_private_key.netmaker_provisioner_key.public_key_openssh
+
+  tags = var.tags
+}
+
+resource "tls_private_key" "netmaker_provisioner_key" {
+  algorithm = "RSA"
+  rsa_bits  = "2048"
+}
+
+resource "local_file" "netmaker_provisioner_key" {
+  content         = tls_private_key.netmaker_provisioner_key.private_key_pem
+  filename        = "${path.module}/netmaker_ssh_provisioner_key"
+  file_permission = "0600"
+}
+
+resource "local_file" "netmaker_provisioner_public_key" {
+  content  = tls_private_key.netmaker_provisioner_key.public_key_openssh
+  filename = "${path.module}/netmaker_ssh_provisioner_public_key"
+}
+
+resource "aws_iam_instance_profile" "default" {
+  name = "${replace(var.domain, ".", "-")}-${var.tenant}-netmaker"
+  role = aws_iam_role.default.name
+}
+
+resource "aws_iam_role" "default" {
+  name = "${replace(var.domain, ".", "-")}-${var.tenant}-netmaker"
+  path = "/"
+
+  assume_role_policy = data.aws_iam_policy_document.default.json
+}
+
+data "aws_iam_policy_document" "default" {
+  statement {
+    sid = ""
+
+    actions = [
+      "sts:AssumeRole",
+    ]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+
+    effect = "Allow"
+  }
+}
+
+resource "aws_security_group" "default" {
+  name        = module.label.id
+  vpc_id      = var.vpc_id
+  description = "netmaker security group"
+
+  tags = module.label.tags
+
+  ingress {
+    description = "ssh access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "netmaker admin access"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "docker repo http access"
+    from_port   = 51821
+    to_port     = 51821 + var.number_wg_networks
+    protocol    = "udp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = "-1"
+    to_port     = "-1"
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_instance" "netmaker" {
+  ami                         = var.ami
+  instance_type               = var.instance_type
+  vpc_security_group_ids      = compact(concat([aws_security_group.default.id], var.security_groups))
+  iam_instance_profile        = aws_iam_instance_profile.default.name
+  associate_public_ip_address = "true"
+  key_name                    = aws_key_pair.netmaker_provisioner_key.key_name
+  subnet_id                   = var.subnets[0]
+  tags                        = merge({ Name = "netmaker" }, module.label.tags)
+  volume_tags                 = merge({ Name = "netmaker" }, module.label.tags)
+  root_block_device {
+    delete_on_termination = var.delete_storage_on_term
+    volume_type           = "gp2"
+    volume_size           = 100
+  }
+  lifecycle {
+    ignore_changes = [
+      ami
+    ]
+  }
+}
+
+resource "aws_route53_record" "netmaker-wildcard" {
+  zone_id = var.zone_id
+  name    = var.name
+  type    = "A"
+  ttl     = "300"
+  records = [aws_instance.netmaker.private_ip]
+}
+
+# Create Ansible Inventory file
+resource "local_file" "ansible-inventory" {
+  content = templatefile("${path.module}/templates/inventory.tpl", {
+    ssh_user       = var.ssh_user
+    ssh_key        = "./netmaker_ssh_provisioner_key"
+    netmaker_hostname = aws_instance.netmaker.public_ip
+  })
+  filename        = "${path.module}/inventory"
+  file_permission = "0644"
+  depends_on      = [local_file.netmaker_provisioner_key]
+}
+
+resource "null_resource" "configure-netmaker" {
+  provisioner "local-exec" {
+    command     = "ansible-galaxy collection install community.docker && ansible-playbook -i inventory netmaker.yaml --extra-vars 'letsencrypt_email=${var.letsencrypt_email} server_public_ip=${var.server_public_ip} base_domain=${var.base_domain}'"
+    working_dir = path.module
+  }
+  depends_on = [aws_instance.netmaker, local_file.ansible-inventory]
+}
