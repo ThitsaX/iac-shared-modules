@@ -1,8 +1,8 @@
-# minio Module
+# Nexus Module
 
-Create minio server using EC2 instance.
+Create Nexus server using EC2 instance.
 
-The module creates an EC2 instance. It configures minio using a docker instance.
+The module creates an EC2 instance. It configures Nexus using a docker instance.
 
 Configuration is done by Ansible using the roles included in this module.
 
@@ -34,9 +34,9 @@ Configuration is done by Ansible using the roles included in this module.
 | domain | Base domain | `string` | n/a | yes |
 | instance\_type | Elastic cache instance type | `string` | `"t3.medium"` | no |
 | key\_name | Key name | `string` | `""` | no |
-| name | Name  (e.g. `app` or `bastion`) | `string` | `"minio"` | no |
+| name | Name  (e.g. `app` or `bastion`) | `string` | `"nexus"` | no |
 | namespace | Namespace. Used to help uniquely name resources | `string` | n/a | yes |
-| minio\_admin\_password | minio admin password, if blank, random pw will be generated | `string` | `""` | no |
+| nexus\_admin\_password | nexus admin password, if blank, random pw will be generated | `string` | `""` | no |
 | security\_groups | AWS security group IDs | `list(string)` | n/a | yes |
 | ssh\_user | Default SSH user for this AMI. e.g. `ec2user` for Amazon Linux and `ubuntu` for Ubuntu systems | `string` | `"ubuntu"` | no |
 | subnets | AWS subnet IDs | `list(string)` | n/a | yes |
@@ -49,13 +49,13 @@ Configuration is done by Ansible using the roles included in this module.
 | Name | Description |
 |------|-------------|
 | instance\_id | Instance ID |
-| minio\_admin\_pw | minio admin pw |
-| minio\_docker\_repo\_port | minio docker repo port |
-| minio\_ssh\_private\_key | Private SSH key for minio Server |
-| minio\_ssh\_public\_key | Public SSH key for minio Server |
+| nexus\_admin\_pw | nexus admin pw |
+| nexus\_docker\_repo\_port | nexus docker repo port |
+| nexus\_ssh\_private\_key | Private SSH key for Nexus Server |
+| nexus\_ssh\_public\_key | Public SSH key for Nexus Server |
 | role | Name of AWS IAM Role associated with the instance |
 | security\_group\_id | Security group ID |
 | server\_hostname | n/a |
-| server\_private\_ip | Private IP of minio server |
+| server\_private\_ip | Private IP of nexus server |
 | ssh\_user | SSH user |
 

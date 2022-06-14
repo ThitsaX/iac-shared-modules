@@ -1,0 +1,6 @@
+- hosts: minio
+  become: yes
+  collections:
+    - community.docker
+  roles:
+    - minio-server

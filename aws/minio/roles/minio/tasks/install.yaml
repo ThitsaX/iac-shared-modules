@@ -1,0 +1,46 @@
+- name: Update apt cache
+  shell: apt update
+
+- name: Install dependencies
+  package:
+    name:
+      - docker.io
+      - docker-compose 
+      - wireguard
+
+- name: enable service docker and ensure it is started
+  service:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: "create directory for project"
+  file:
+    path: "{{ root_dir }}"
+    state: directory
+    recurse: yes
+
+- name: "deploy systemd service"
+  template:
+    src: "../templates/minio.service.j2"
+    dest: "/etc/systemd/system/minio.service"
+  register: service
+
+
+- name: "deploy docker compose file"
+  template:
+    src: "../templates/minio.docker-compose.yml.j2"
+    dest: "{{ root_dir}}/docker-compose.yml"
+  register: compose
+
+- name: "deploy docker mosquito file"
+  template:
+    src: "../templates/nginx.conf.j2"
+    dest: "{{ root_dir}}/nginx.conf"
+  register: nginx
+
+- name: "set to auto restart"
+  systemd:
+    enabled: "yes"
+    daemon_reload: yes
+    name: "minio"

@@ -23,11 +23,6 @@ resource "random_password" "minio_password" {
   override_special = "@#*"
 }
 
-resource "random_password" "minio_root_user" {
-  length  = 16
-  special = false
-}
-
 resource "aws_key_pair" "minio_provisioner_key" {
   key_name   = "minio-${var.namespace}-${var.domain}-deployer-key"
   public_key = tls_private_key.minio_provisioner_key.public_key_openssh
@@ -100,15 +95,7 @@ resource "aws_security_group" "default" {
     from_port   = 9000
     to_port     = 9000
     protocol    = "tcp"
-    cidr_blocks = var.docker_repo_allowed_cidr_blocks
-  }
-
-  ingress {
-    description = "minio console access"
-    from_port   = 9001
-    to_port     = 9001
-    protocol    = "tcp"
-    cidr_blocks = var.docker_repo_allowed_cidr_blocks
+    cidr_blocks = var.minio_allowed_cidr_blocks
   }
 
   egress {
@@ -152,13 +139,13 @@ resource "aws_instance" "minio" {
   }
 }
 
-resource "aws_route53_record" "minio-private" {
+/* resource "aws_route53_record" "minio-private" {
   zone_id = var.zone_id
   name    = var.name
   type    = "A"
   ttl     = "300"
   records = [aws_instance.minio.private_ip]
-}
+} */
 
 # Create Ansible Inventory file
 resource "local_file" "ansible-inventory" {
@@ -174,13 +161,8 @@ resource "local_file" "ansible-inventory" {
 
 resource "null_resource" "configure-minio" {
   provisioner "local-exec" {
-    command     = "ansible-galaxy collection install community.docker && ansible-playbook -i inventory minio.yaml --extra-vars 'root_pw=${local.minio_admin_password} root_user=${local.minio_root_user}'"
+    command     = "ansible-galaxy collection install community.docker && ansible-playbook -i inventory minio.yaml"
     working_dir = path.module
   }
   depends_on = [aws_instance.minio, local_file.ansible-inventory]
-}
-
-locals {
-  minio_admin_password = var.minio_admin_password == "" ? random_password.minio_password.result : var.minio_admin_password
-  minio_root_user = random_password.minio_root_user.result
 }

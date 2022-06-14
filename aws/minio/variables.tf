@@ -41,7 +41,7 @@ variable "zone_id" {
 variable "instance_type" {
   type        = string
   default     = "t3.medium"
-  description = "instance type"
+  description = "minio instance type"
 }
 
 variable "ami" {
@@ -77,15 +77,6 @@ variable "security_groups" {
   description = "AWS security group IDs"
 }
 
-variable "docker_repo_allowed_cidr_blocks" {
-  type        = list(string)
-  description = "A list of CIDR blocks allowed to connect"
-
-  default = [
-    "10.25.0.0/16"
-  ]
-}
-
 variable "minio_admin_password" {
   type        = string
   description = "minio admin password, if blank, random pw will be generated"
@@ -101,4 +92,13 @@ variable "delete_storage_on_term" {
 variable "tenant" {
   type        = string
   description = "tenancy name"
+}
+
+variable "minio_allowed_cidr_blocks" {
+  type        = list(string)
+  description = "A list of CIDR blocks allowed to connect"
+
+  default = [
+    "10.25.0.0/16"
+  ]
 }
