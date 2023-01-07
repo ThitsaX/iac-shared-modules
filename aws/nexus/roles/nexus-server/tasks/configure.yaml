@@ -46,26 +46,8 @@
     force_basic_auth: yes
     status_code: [200, 404]
   register: proxy_repo_exists
+  with_items: "{{ proxy_repos }}"
 
-- name: Get quay proxy repo if exists
-  uri:
-    url: http://localhost:8081/service/rest/v1/repositories/docker/proxy/quay.io-proxy
-    method: GET
-    user: "admin"
-    password: "{{ new_admin_pw }}"
-    force_basic_auth: yes
-    status_code: [200, 404]
-  register: quay_proxy_repo_exists
-
-- name: Get ghcr proxy repo if exists
-  uri:
-    url: http://localhost:8081/service/rest/v1/repositories/docker/proxy/ghcr.io-proxy
-    method: GET
-    user: "admin"
-    password: "{{ new_admin_pw }}"
-    force_basic_auth: yes
-    status_code: [200, 404]
-  register: ghcr_proxy_repo_exists
 
 - name: Add docker proxy if not exists
   uri:
@@ -76,36 +58,10 @@
     force_basic_auth: yes
     headers:
       Content-Type: application/json
-    src: createproxyrepo.json
+    body: "{{ lookup('template', 'createproxyrepo.json.j2') }}"
     status_code: 201
-  when: proxy_repo_exists.status == 404
-
-- name: Add quay docker proxy if not exists
-  uri:
-    url: http://localhost:8081/service/rest/v1/repositories/docker/proxy
-    method: POST
-    user: "admin"
-    password: "{{ new_admin_pw }}"
-    force_basic_auth: yes
-    headers:
-      Content-Type: application/json
-    src: createquayproxyrepo.json
-    status_code: 201
-  when: quay_proxy_repo_exists.status == 404
-
-- name: Add ghcr docker proxy if not exists
-  uri:
-    url: http://localhost:8081/service/rest/v1/repositories/docker/proxy
-    method: POST
-    user: "admin"
-    password: "{{ new_admin_pw }}"
-    force_basic_auth: yes
-    headers:
-      Content-Type: application/json
-    src: createghcrproxyrepo.json
-    status_code: 201
-  when: ghcr_proxy_repo_exists.status == 404
-
+  when: item.status == 404
+  with_items: "{{ proxy_repo_exists.results }}"
 
 - name: Get docker group repo if exists
   uri:
