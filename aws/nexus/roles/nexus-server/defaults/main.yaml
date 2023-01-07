@@ -6,13 +6,13 @@ proxy_repo_name: base-docker
 group_repo_name: docker-group
 docker_group_listening_port: 8083
 docker_group_member_list: [
-  "docker.io",
+  "base-docker",
   "ghcr.io-proxy",
   "quay.io-proxy",
   "k8s.gcr.io"
 ]
 proxy_repos:
-  - name: "docker.io"
+  - name: "base-docker"
     url: "https://registry-1.docker.io"
     index_type: "HUB"
   - name: "ghcr.io-proxy"
