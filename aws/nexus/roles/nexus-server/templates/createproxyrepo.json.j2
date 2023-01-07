@@ -36,6 +36,6 @@
     },
     "dockerProxy": {
       "indexType": {{ item.item.index_type }},
-      "indexUrl": {{ null if item.item.index_type == 'HUB' else item.item.url }}
+      "indexUrl": {{ None if item.item.index_type == 'HUB' else item.item.url }}
     }
   }
