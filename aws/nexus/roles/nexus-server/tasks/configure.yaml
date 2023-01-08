@@ -39,7 +39,7 @@
 
 - name: Get docker proxy repo if exists
   uri:
-    url: http://localhost:8081/service/rest/v1/repositories/docker/proxy/{{ proxy_repo_name }}
+    url: http://localhost:8081/service/rest/v1/repositories/docker/proxy/{{ item.name }}
     method: GET
     user: "admin"
     password: "{{ new_admin_pw }}"
@@ -48,6 +48,8 @@
   register: proxy_repo_exists
   with_items: "{{ proxy_repos }}"
 
+- debug: msg="{{ lookup('template', 'createproxyrepo.json.j2') }}"
+  with_items: "{{ proxy_repo_exists.results }}"
 
 - name: Add docker proxy if not exists
   uri:
