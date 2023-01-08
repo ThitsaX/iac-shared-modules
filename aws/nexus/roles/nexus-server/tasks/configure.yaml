@@ -49,7 +49,6 @@
   with_items: "{{ proxy_repos }}"
 
 - template: src=createproxyrepo.json.j2 dest=/tmp/output-{{ item.item.name }}.json
-  delegate_to: localhost
   with_items: "{{ proxy_repo_exists.results }}"
 
 - name: Add docker proxy if not exists
