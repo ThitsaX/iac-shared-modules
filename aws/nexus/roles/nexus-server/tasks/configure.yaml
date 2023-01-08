@@ -61,6 +61,7 @@
     headers:
       Content-Type: application/json
     body: "{{ lookup('template', 'createproxyrepo.json.j2') }}"
+    body_format: json
     status_code: 201
   when: item.status == 404
   with_items: "{{ proxy_repo_exists.results }}"
