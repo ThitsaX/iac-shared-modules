@@ -1,5 +1,5 @@
 {
-    "name": {{ item.item.name }},
+    "name": "{{ item.item.name }}",
     "online": true,
     "storage": {
       "blobStoreName": "default",
@@ -7,7 +7,7 @@
     },
     "cleanup": null,
     "proxy": {
-      "remoteUrl": {{ item.item.url }},
+      "remoteUrl": "{{ item.item.url }}",
       "contentMaxAge": -1,
       "metadataMaxAge": -1
     },
@@ -35,7 +35,7 @@
       "httpsPort": null
     },
     "dockerProxy": {
-      "indexType": {{ item.item.index_type }},
-      "indexUrl": {{ None if item.item.index_type == 'HUB' else item.item.url }}
+      "indexType": "{{ item.item.index_type }}",
+      "indexUrl": {{ None if item.item.index_type == 'HUB' else item.item.url | to_json  }}
     }
   }
