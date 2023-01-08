@@ -14,7 +14,7 @@ docker_group_member_list: [
 proxy_repos:
   - name: "base-docker"
     url: "https://registry-1.docker.io"
-    index_type: "HUB"
+    index_type: "REGISTRY"
   - name: "ghcr.io-proxy"
     url: "https://ghcr.io"
     index_type: "REGISTRY"
