@@ -48,9 +48,6 @@
   register: proxy_repo_exists
   with_items: "{{ proxy_repos }}"
 
-- template: src=createproxyrepo.json.j2 dest=/tmp/output-{{ item.item.name }}.json
-  with_items: "{{ proxy_repo_exists.results }}"
-
 - name: Add docker proxy if not exists
   uri:
     url: http://localhost:8081/service/rest/v1/repositories/docker/proxy
