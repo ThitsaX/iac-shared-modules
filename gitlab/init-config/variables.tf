@@ -27,3 +27,11 @@ variable "two_factor_grace_period" {
   description = "two_factor_grace_period in hours"
   default = 0
 }
+
+variable "remote_state_bucket" {
+  description = "remote_state bucket name"
+}
+
+variable "remote_state_table" {
+  description = "remote_state table name"
+}

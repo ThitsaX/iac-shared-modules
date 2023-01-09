@@ -31,6 +31,24 @@ resource "gitlab_group_variable" "iam_user_key_secret" {
   environment_scope = "*"
 }
 
+resource "gitlab_group_variable" "remote_state_table" {
+  group             = gitlab_group.iac.id
+  key               = "REMOTE_STATE_TABLE"
+  value             = var.remote_state_table
+  protected         = false
+  masked            = false
+  environment_scope = "*"
+}
+
+resource "gitlab_group_variable" "remote_state_bucket" {
+  group             = gitlab_group.iac.id
+  key               = "REMOTE_STATE_BUCKET"
+  value             = var.remote_state_bucket
+  protected         = false
+  masked            = false
+  environment_scope = "*"
+}
+
 resource "gitlab_project" "envs" {
   for_each = toset(var.env_list)
   name = each.value
