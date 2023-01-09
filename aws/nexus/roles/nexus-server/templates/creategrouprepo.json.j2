@@ -6,11 +6,7 @@
     "strictContentTypeValidation": true
   },
   "group": {
-    "memberNames": [
-      "base-docker",
-      "ghcr.io-proxy",
-      "quay.io-proxy"
-    ]
+    "memberNames": {{ docker_group_member_list | to_json }}
   },
   "docker": {
     "v1Enabled": false,

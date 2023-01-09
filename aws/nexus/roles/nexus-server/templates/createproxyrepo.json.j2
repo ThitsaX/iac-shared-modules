@@ -1,5 +1,5 @@
 {
-    "name": "ghcr.io-proxy",
+    "name": "{{ item.item.name }}",
     "online": true,
     "storage": {
       "blobStoreName": "default",
@@ -7,7 +7,7 @@
     },
     "cleanup": null,
     "proxy": {
-      "remoteUrl": "https://ghcr.io",
+      "remoteUrl": "{{ item.item.url }}",
       "contentMaxAge": -1,
       "metadataMaxAge": -1
     },
@@ -35,7 +35,7 @@
       "httpsPort": null
     },
     "dockerProxy": {
-      "indexType": "REGISTRY",
-      "indexUrl": "https://ghcr.io"
+      "indexType": "{{ item.item.index_type }}",
+      "indexUrl": "{{ item.item.url }}"
     }
   }
