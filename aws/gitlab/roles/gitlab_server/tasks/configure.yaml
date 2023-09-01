@@ -1,3 +1,21 @@
+- name: Add local git user
+  become: true
+  user:
+    name: "git"
+    group: root
+    shell: /bin/bash
+    home: /home/git
+    create_home: yes
+    state: present
+
+- name: Add "git" to sudoers file
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    regexp: "^sgit"
+    line: "git ALL=(ALL) NOPASSWD: ALL"
+    validate: 'visudo -cf %s'
+
 - name: Create GitLab SSL configuration folder.
   file:
     path: /etc/gitlab/ssl
