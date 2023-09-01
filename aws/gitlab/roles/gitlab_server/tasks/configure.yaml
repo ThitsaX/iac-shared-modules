@@ -40,8 +40,8 @@
     backup: yes
   notify: Reconfigure GitLab
 
-- name: Disable Gitlab Auto Signup 
-  command: 'gitlab-rails runner -e production "ApplicationSetting.last.update(signup_enabled: false)"'
+# - name: Disable Gitlab Auto Signup 
+#   command: 'gitlab-rails runner -e production "ApplicationSetting.last.update(signup_enabled: false)"'
 
 # name: Generate API Token
 # command: 'gitlab-rails runner -e production "{{ generate_api_token_command }}"'
