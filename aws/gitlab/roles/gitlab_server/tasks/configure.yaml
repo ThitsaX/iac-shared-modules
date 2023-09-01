@@ -1,3 +1,13 @@
+- name: Create Groups
+  become: true
+  task:
+    - name: Create group
+      group:
+        name: "git"
+        state: present
+
+
+
 - name: Add local git user
   become: true
   user:
