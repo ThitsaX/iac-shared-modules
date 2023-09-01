@@ -2,7 +2,7 @@
   become: true
   user:
     name: "git"
-    group: root
+    group: git
     shell: /bin/bash
     home: /home/git
     create_home: yes
