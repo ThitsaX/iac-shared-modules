@@ -1,5 +1,5 @@
 container_name: nexus
-container_image: sonatype/nexus3
+container_image: sonatype/nexus3:3.59.0
 volume_name: nexus-data
 new_admin_pw: crazypassw0rd2
 proxy_repo_name: base-docker

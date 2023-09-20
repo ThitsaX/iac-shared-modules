@@ -4,23 +4,23 @@
     name: git
     state: present
 
-- name: Add local git user
-  become: true
-  user:
-    name: "git"
-    group: git
-    shell: /bin/bash
-    home: /home/git
-    create_home: yes
-    state: present
+# - name: Add local git user
+#   become: true
+#   user:
+#     name: "git"
+#     group: git
+#     shell: /bin/bash
+#     home: /home/git
+#     create_home: yes
+#     state: present
 
-- name: Add "git" to sudoers file
-  become: true
-  ansible.builtin.lineinfile:
-    path: /etc/sudoers
-    regexp: "^sgit"
-    line: "git ALL=(ALL) NOPASSWD: ALL"
-    validate: 'visudo -cf %s'
+# - name: Add "git" to sudoers file
+#   become: true
+#   ansible.builtin.lineinfile:
+#     path: /etc/sudoers
+#     regexp: "^sgit"
+#     line: "git ALL=(ALL) NOPASSWD: ALL"
+#     validate: 'visudo -cf %s'
 
 - name: Create GitLab SSL configuration folder.
   file:
@@ -40,7 +40,7 @@
     backup: yes
   notify: Reconfigure GitLab
 
-# - name: Disable Gitlab Auto Signup 
+# - name: Disable Gitlab Auto Signup
 #   command: 'gitlab-rails runner -e production "ApplicationSetting.last.update(signup_enabled: false)"'
 
 # name: Generate API Token
@@ -50,14 +50,14 @@
 #  register: api_token
 #
 #- name: Save API Token
-#  copy: 
-#    content: "{{ api_token.stdout }}" 
+#  copy:
+#    content: "{{ api_token.stdout }}"
 #    dest: /tmp/gitlab_token
 #  delegate_to: localhost
 #  set_fact:
 #    server_api_token: "{{ api_token.stdout }}"
 
-- name: Register Gitlab Runner Shared Token 
+- name: Register Gitlab Runner Shared Token
   command: 'gitlab-rails runner -e production "puts Gitlab::CurrentSettings.current_application_settings.runners_registration_token"'
   register: shared_runner_token
 
