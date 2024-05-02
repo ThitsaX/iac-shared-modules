@@ -1,29 +1,10 @@
-- name: Create GitLab system user and group
-  hosts: your_target_host
-  become: yes  # Ensure privilege escalation to execute commands as root
-
-  tasks:
-    - name: Ensure 'git' group exists
-      ansible.builtin.group:
-        name: git
-        state: present
-
-    - name: Ensure 'git' user exists
-      ansible.builtin.user:
-        name: git
-        group: git
-        shell: /bin/bash
-        home: /var/opt/gitlab
-        system: yes
-        state: present
-
-- name: Create GitLab SSL configuration folder.
-  file:
-    path: /etc/gitlab/ssl
-    state: directory
-    owner: git
-    group: git
-    mode: '0755'
+# - name: Create GitLab SSL configuration folder.
+#   file:
+#     path: /etc/gitlab/ssl
+#     state: directory
+#     owner: git
+#     group: git
+#     mode: '0755'
 
 - name: Configure GitLab
   template:
